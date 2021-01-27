@@ -6,3 +6,4 @@ node_modules
 /Tint-win32-arm64
 /Tint-win32-ia32
 /Tint-win32-x64
+/tintCompileCommand.txt
