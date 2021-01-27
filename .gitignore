@@ -1,9 +1,3 @@
 node_modules
-/Tint-linux-arm64
-/Tint-linux-armv7l
-/Tint-linux-ia32
-/Tint-linux-x64
-/Tint-win32-arm64
-/Tint-win32-ia32
-/Tint-win32-x64
+/Builds
 /tintCompileCommand.txt
