@@ -1,0 +1,493 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;  
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+/* My Custom Styling */
+
+header {
+    background-color: #222222;
+    padding: 12px;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+    font-size: 150%;
+    font-weight: 100;
+    color: #e9f1f9;
+    height: 10px;
+    -webkit-app-region: drag;
+}
+
+.header-options:first-child {
+    margin-left: 0px;
+}
+
+.header-options {
+    margin-left: 10px;
+    -webkit-app-region: no-drag;
+}
+
+body {
+    color: #cccccc;
+    overflow: hidden;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-family: 'Inter', sans-serif;
+    appearance: none;       /* Remove default arrow */
+    background-image: url(...);   /* Add custom arrow */
+    background-color: #222222;
+    border: 0px;
+    height: 28px;
+    width: 100px;
+    text-align: center;
+    font-size: 100%;
+    font-weight: 600;
+    color: white;
+}
+
+h2, p {
+    color: white;
+    font-family: 'Inter', sans-serif;
+}
+
+.rpc-run-config {
+    position: relative;
+    top: 50px;
+    margin: auto;
+    width: 400px;
+    height: 50px;
+    background: #2e2e2e;
+    border-radius: 14px;
+    border-color: #222222;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.client-id-input {
+    background-color: #272727;
+    border: none;
+    padding: 14px 8px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: rgb(168, 168, 168);
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+    top: 5px;
+    left: 10px;
+    resize: none;
+    outline: none;
+    width: 220px;
+    height: 65%;
+    float: left;
+}
+
+.client-id-button {
+    background-color: #60c34a;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: #fff;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+    top: 5px;
+    left: 10px;
+    resize: none;
+    outline: none;
+    width: 152px;
+    height: 65%;
+    font-weight: 600;
+    outline: none;
+    float: left;
+}
+
+.client-id-reload {
+    background-color: #efc03d;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: #fff;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    position: absolute;
+    top: 5px;
+    left: 233px;
+    resize: none;
+    outline: none;
+    width: 99px;
+    height: 65%;
+    font-weight: 600;
+    outline: none;
+    visibility: hidden;
+}
+
+.client-id-stop {
+    background-color: #e66060;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: #fff;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    resize: none;
+    outline: none;
+    width: 50px;
+    left: 335px;
+    height: 65%;
+    font-weight: 600;
+    outline: none;
+    visibility: hidden;
+}
+
+/*
+.spacer {
+    position: relative;
+    top: 70px;
+    margin: auto;
+    width: 380px;
+    height: 5px;
+    background: #4b4b4b;
+    border-radius: 14px;
+    border-color: #222222;
+    overflow: hidden;
+} */
+
+.rpc-main-config-detailBox {
+    position: relative;
+    top: 90px;
+    margin: auto;
+    width: 400px;
+    height: 50px;
+    background: #2e2e2e;
+    border-radius: 14px;
+    border-color: #222222;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.client-id-detail {
+    background-color: #272727;
+    border: none;
+    padding: 14px 8px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: rgb(168, 168, 168);
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+    top: 5px;
+    left: 10px;
+    resize: none;
+    outline: none;
+    width: 375px;
+    height: 65%;
+    float: left;
+}
+
+.rpc-main-config-stateBox {
+    position: relative;
+    top: 130px;
+    margin: auto;
+    width: 400px;
+    height: 50px;
+    background: #2e2e2e;
+    border-radius: 14px;
+    border-color: #222222;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.client-id-state {
+    background-color: #272727;
+    border: none;
+    padding: 14px 8px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: rgb(168, 168, 168);
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+    top: 5px;
+    left: 10px;
+    resize: none;
+    outline: none;
+    width: 375px;
+    height: 65%;
+    float: left;
+}
+
+.rpc-main-config-ImageKey {
+    position: relative;
+    top: 160px;
+    margin: auto;
+    width: 400px;
+    height: 50px;
+    background: #2e2e2e;
+    border-radius: 14px;
+    border-color: #222222;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.client-id-LImageKey {
+    background-color: #272727;
+    border: none;
+    padding: 14px 8px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: rgb(168, 168, 168);
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+    top: 5px;
+    left: 10px;
+    resize: none;
+    outline: none;
+    width: 185px;
+    height: 65%;
+    float: left;
+}
+
+.client-id-SImageKey {
+    background-color: #272727;
+    border: none;
+    padding: 14px 8px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: rgb(168, 168, 168);
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+    top: 5px;
+    left: 10px;
+    resize: none;
+    outline: none;
+    width: 185px;
+    height: 65%;
+    float: left;
+}
+
+.rpc-main-config-ImageText {
+    position: relative;
+    top: 190px;
+    margin: auto;
+    width: 400px;
+    height: 50px;
+    background: #2e2e2e;
+    border-radius: 14px;
+    border-color: #222222;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.client-id-LImageText {
+    background-color: #272727;
+    border: none;
+    padding: 14px 8px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: rgb(168, 168, 168);
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+    top: 5px;
+    left: 10px;
+    resize: none;
+    outline: none;
+    width: 185px;
+    height: 65%;
+    float: left;
+}
+
+.client-id-SImageText {
+    background-color: #272727;
+    border: none;
+    padding: 14px 8px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: rgb(168, 168, 168);
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+    top: 5px;
+    left: 10px;
+    resize: none;
+    outline: none;
+    width: 185px;
+    height: 65%;
+    float: left;
+}
+
+.client-save-button {
+    position: relative;
+    background-color: #60c34a;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: #fff;
+    margin: auto;
+    cursor: pointer;
+    border-radius: 4px;
+    resize: none;
+    outline: none;
+    width: 152px;
+    height: 35px;
+    left: 77px;
+    font-weight: 600;
+    outline: none;
+    float: left;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.client-load-button {
+    position: relative;
+    background-color: #4a70c3;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: #fff;
+    margin: auto;
+    cursor: pointer;
+    border-radius: 4px;
+    resize: none;
+    outline: none;
+    width: 152px;
+    height: 35px;
+    left: 117px;
+    font-weight: 600;
+    outline: none;
+    float: left;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
