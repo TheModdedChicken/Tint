@@ -1,17 +1,12 @@
 const RPC = require('discord-rpc');
-const rpcModules = require('./rpcModules');
-
+const {ipcRenderer} = require('electron');
 var fs = require('fs');
 
-const {ipcRenderer} = require('electron');
-
 var isRPCon = false;
-var isInReady = false;
-var destroyRPC = false;
 
 userData = require ('./userData.json');
 
-
+/* Window Menu Functions */
 function closeApp() {
     ipcRenderer.send('close-me');
 };
@@ -24,24 +19,7 @@ function maximizeApp() {
     ipcRenderer.send('maximize-me');
 }
 
-function loadData() {
-    var clientIdInputS = document.getElementById('client-id-input');
-    var detailTextS = document.getElementById('client-id-detail');
-    var stateTextS = document.getElementById('client-id-state');
-    var LImageKeyS = document.getElementById('client-id-LImageKey');
-    var SImageKeyS = document.getElementById('client-id-SImageKey');
-    var LImageTextS = document.getElementById('client-id-LImageText');
-    var SImageTextS = document.getElementById('client-id-SImageText');
-
-    clientIdInputS.value = userData.ClientID
-    detailTextS.value = userData.DetailText
-    stateTextS.value = userData.StateText
-    LImageTextS.value = userData.LargeImageText
-    SImageTextS.value = userData.SmallImageText
-    LImageKeyS.value = userData.LargeImageKey
-    SImageKeyS.value = userData.SmallImageKey
-}
-
+/* RPC Load Functions */
 function startRPC() {
     var startButton = document.getElementById('client-id-button');
     var reloadButton = document.getElementById('client-id-reload');
@@ -72,74 +50,27 @@ function createRPC(clientIdLogin) {
     var stateText = document.getElementById('client-id-state').value;
     var LImageKey = document.getElementById('client-id-LImageKey').value;
     var SImageKey = document.getElementById('client-id-SImageKey').value;
-
-    if (detailText) {
-        var detailJson = {
-            details: `${detailText}`
-        }
-    }
-
-    if (stateText) {
-        var stateJson = {
-            state: `${stateText}`
-        }
-    }
-
-    if (LImageKey) {
-        var LImageKeyJson = {
-            largeImageKey: `${LImageKey}`
-        }
-    }
-
-    if (SImageKey) {
-        var SImageKeyJson = {
-            smallImageKey: `${SImageKey}`
-        }
-    }
-
-    var extraJson = {
-        startTimestamp: new Date(),
-        largeImageText: "Thonking",
-        smallImageText: "Using 2/5 brain cells"
-    }
-
-    var completeData = Object.assign({}, detailJson, stateJson, SImageKeyJson, LImageKeyJson, extraJson);
-
-    rpc = new RPC.Client({
-        transport: "ipc"
-    });
-
-    rpc.login({
-        clientId: `${clientIdLogin}`
-    });
-
-    rpc.on("ready", () => {
-        rpc.setActivity(completeData);
-        return;
-    })
-}
-
-function destRPC() {
-    rpc.destroy();
-}
-
-function reloadRPC() {
-    var detailText = document.getElementById('client-id-detail').value;
-    var stateText = document.getElementById('client-id-state').value;
-    var LImageKey = document.getElementById('client-id-LImageKey').value;
-    var SImageKey = document.getElementById('client-id-SImageKey').value;
     var LImageText = document.getElementById('client-id-LImageText').value;
     var SImageText = document.getElementById('client-id-SImageText').value;
 
+    if(!clientIdLogin) {
+        startRPC();
+        return;
+    }
+
     if (detailText) {
-        var detailJson = {
-            details: `${detailText}`
+        if (detailText.length >= 2) {
+            var detailJson = {
+                details: `${detailText}`
+            }
         }
     }
 
     if (stateText) {
-        var stateJson = {
-            state: `${stateText}`
+        if (stateText.length >= 2) {
+            var stateJson = {
+                state: `${stateText}`
+            }
         }
     }
 
@@ -168,9 +99,84 @@ function reloadRPC() {
     }
 
     var extraJson = {
-        startTimestamp: new Date(),
-        largeImageText: "Thonking",
-        smallImageText: "Using 2/5 brain cells"
+        startTimestamp: new Date()
+    }
+
+    var completeData = Object.assign({}, detailJson, stateJson, SImageKeyJson, LImageKeyJson, LImageTextJson, SImageTextJson, extraJson);
+
+    rpc = new RPC.Client({
+        transport: "ipc"
+    });
+
+    rpc.login({
+        clientId: `${clientIdLogin}`
+    });
+
+    rpc.on("ready", () => {
+        rpc.setActivity(completeData);
+        return;
+    })
+}
+
+function destRPC() {
+    rpc.destroy();
+}
+
+function reloadRPC() {
+    var detailText = document.getElementById('client-id-detail').value;
+    var stateText = document.getElementById('client-id-state').value;
+    var LImageKey = document.getElementById('client-id-LImageKey').value;
+    var SImageKey = document.getElementById('client-id-SImageKey').value;
+    var LImageText = document.getElementById('client-id-LImageText').value;
+    var SImageText = document.getElementById('client-id-SImageText').value;
+
+    if(!clientIdLogin) {
+        startRPC();
+        return;
+    }
+
+    if (detailText) {
+        if (detailText.length >= 2) {
+            var detailJson = {
+                details: `${detailText}`
+            }
+        }
+    }
+
+    if (stateText) {
+        if (stateText.length >= 2) {
+            var stateJson = {
+                state: `${stateText}`
+            }
+        }
+    }
+
+    if (LImageKey) {
+        var LImageKeyJson = {
+            largeImageKey: `${LImageKey}`
+        }
+    }
+
+    if (SImageKey) {
+        var SImageKeyJson = {
+            smallImageKey: `${SImageKey}`
+        }
+    }
+
+    if (LImageText) {
+        var LImageTextJson = {
+            largeImageText: `${LImageText}`
+        }
+    }
+
+    if (SImageText) {
+        var SImageTextJson = {
+            smallImageText: `${SImageText}`
+        }
+    }
+
+    var extraJson = {
+        startTimestamp: new Date()
     }
 
     var completeData = Object.assign({}, detailJson, stateJson, SImageKeyJson, LImageKeyJson, LImageTextJson, SImageTextJson, extraJson);
@@ -178,6 +184,7 @@ function reloadRPC() {
     rpc.setActivity(completeData);
 }
 
+/* User data saving & loading functions */
 function saveCurrentFields () {
     var clientIdInput = document.getElementById('client-id-input').value;
     var detailText = document.getElementById('client-id-detail').value;
@@ -229,4 +236,22 @@ function saveCurrentFields () {
         return;
     });
 
+}
+
+function loadData() {
+    var clientIdInputS = document.getElementById('client-id-input');
+    var detailTextS = document.getElementById('client-id-detail');
+    var stateTextS = document.getElementById('client-id-state');
+    var LImageKeyS = document.getElementById('client-id-LImageKey');
+    var SImageKeyS = document.getElementById('client-id-SImageKey');
+    var LImageTextS = document.getElementById('client-id-LImageText');
+    var SImageTextS = document.getElementById('client-id-SImageText');
+
+    clientIdInputS.value = userData.ClientID
+    detailTextS.value = userData.DetailText
+    stateTextS.value = userData.StateText
+    LImageTextS.value = userData.LargeImageText
+    SImageTextS.value = userData.SmallImageText
+    LImageKeyS.value = userData.LargeImageKey
+    SImageKeyS.value = userData.SmallImageKey
 }

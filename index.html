@@ -12,7 +12,7 @@
     <header style="overflow: hidden;">
         <div class="header-options" style="position: relative; float: left; border-radius: 20px; background: #e66060; width: 10px; height: 10px; cursor: pointer;" onclick="closeApp();"></div>
         <div class="header-options" style="position: relative; float: left; border-radius: 20px; background: #efc03d; width: 10px; height: 10px; cursor: pointer;" onclick="minimizeApp();"></div>
-        <div class="header-options" style="position: relative; float: left; border-radius: 20px; background: #60c34a; width: 10px; height: 10px; cursor: pointer;" onclick="maximizeApp()"></div>
+        <!--div class="header-options" style="position: relative; float: left; border-radius: 20px; background: #60c34a; width: 10px; height: 10px; cursor: pointer;" onclick="maximizeApp()"></div-->
     </header>
     <div class="main" id="main">
         <div class="rpc-run-config">
@@ -21,25 +21,25 @@
             <button class="client-id-reload" id="client-id-reload" onclick="reloadRPC();">Reload</button>
             <button class="client-id-stop" id="client-id-stop" onclick="startRPC();">Stop</button>
         </div>
-        <h2 style="position: relative; top: 80px; margin: auto; text-align: center; font-family: 'Inter'; font-weight: 500; font-size: 18px;">Detail Text</h2>
+        <h2 style="position: relative; top: 80px; margin: auto; text-align: center; font-family: 'Inter'; font-weight: 500; font-size: 18px; cursor: default;">Detail Text</h2>
         <div class="rpc-main-config-detailBox">
             <input class="client-id-detail" id="client-id-detail" placeholder="You know how to type right?" type="text" spellcheck="false"></input>
         </div>
 
-        <h2 style="position: relative; top: 120px; margin: auto; text-align: center; font-family: 'Inter'; font-weight: 500; font-size: 18px;">State Text</h2>
+        <h2 class="state-field-header-text" style="position: relative; width: fit-content; height: fit-content; left: 205px; top: 120px; text-align: center; font-family: 'Inter'; font-weight: 500; font-size: 18px;">State Text</h2>
         <div class="rpc-main-config-stateBox">
-            <input class="client-id-state" id="client-id-state" placeholder="Using 2/5 Brain Cells" type="text" spellcheck="false"></input>
+            <input class="client-id-state" id="client-id-state" placeholder="Using 2/5 Brain Cells" type="text" spellcheck="false" minlength="2"></input>
         </div>
 
-        <h2 style="position: relative; top: 150px; left: 85px; margin: auto; text-align: center; font-family: 'Inter'; font-weight: 500; font-size: 18px; float: left;">Large Image Key</h2>
-        <h2 style="position: relative; top: 150px; left: 25px; margin: auto; text-align: center; font-family: 'Inter'; font-weight: 500; font-size: 18px;">Small Image Key</h2>
+        <h2 style="position: relative; top: 150px; left: 85px; margin: auto; text-align: center; font-family: 'Inter'; font-weight: 500; font-size: 18px; float: left; cursor: default;">Large Image Key</h2>
+        <h2 style="position: relative; top: 150px; left: 25px; margin: auto; text-align: center; font-family: 'Inter'; font-weight: 500; font-size: 18px; cursor: default;">Small Image Key</h2>
         <div class="rpc-main-config-ImageKey">
             <input class="client-id-LImageKey" id="client-id-LImageKey" placeholder="bigThonk" type="text" spellcheck="false"></input>
             <input class="client-id-SImageKey" id="client-id-SImageKey" placeholder="smallThonk" type="text" spellcheck="false"></input>
         </div>
 
-        <h2 style="position: relative; top: 180px; left: 80px; margin: auto; text-align: center; font-family: 'Inter'; font-weight: 500; font-size: 18px; float: left;">Large Image Text</h2>
-        <h2 style="position: relative; top: 180px; left: 20px; margin: auto; text-align: center; font-family: 'Inter'; font-weight: 500; font-size: 18px;">Small Image Text</h2>
+        <h2 style="position: relative; top: 180px; left: 80px; margin: auto; text-align: center; font-family: 'Inter'; font-weight: 500; font-size: 18px; float: left; cursor: default;">Large Image Text</h2>
+        <h2 style="position: relative; top: 180px; left: 20px; margin: auto; text-align: center; font-family: 'Inter'; font-weight: 500; font-size: 18px; cursor: default;">Small Image Text</h2>
         <div class="rpc-main-config-ImageText">
             <input class="client-id-LImageText" id="client-id-LImageText" placeholder="Thonking" type="text" spellcheck="false"></input>
             <input class="client-id-SImageText" id="client-id-SImageText" placeholder="Idle" type="text" spellcheck="false"></input>

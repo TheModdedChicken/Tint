@@ -120,7 +120,7 @@ header {
 
 body {
     color: #cccccc;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 select {
@@ -308,6 +308,14 @@ h2, p {
     border-color: #222222;
     overflow: hidden;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.state-field-header-text {
+    cursor: pointer;
+}
+
+.state-field-header-text:hover {
+    color: #3868ce;
 }
 
 .client-id-state {
