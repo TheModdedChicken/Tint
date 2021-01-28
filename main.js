@@ -2,8 +2,8 @@ const { app, BrowserWindow, BrowserView, Menu, ipcMain, autoUpdater } = require(
 
 function createWindow () {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 500,
+    height: 700,
     minHeight: 700,
     minWidth: 500,
     maxHeight: 700,

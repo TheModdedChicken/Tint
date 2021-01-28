@@ -123,6 +123,7 @@ function destRPC() {
 }
 
 function reloadRPC() {
+    var clientIdLogin = document.getElementById('client-id-input').value;
     var detailText = document.getElementById('client-id-detail').value;
     var stateText = document.getElementById('client-id-state').value;
     var LImageKey = document.getElementById('client-id-LImageKey').value;
@@ -238,7 +239,9 @@ function saveCurrentFields () {
 
 }
 
-function loadData() {
+function loadData(item) {
+    console.log(item);
+    /*
     var clientIdInputS = document.getElementById('client-id-input');
     var detailTextS = document.getElementById('client-id-detail');
     var stateTextS = document.getElementById('client-id-state');
@@ -253,5 +256,49 @@ function loadData() {
     LImageTextS.value = userData.LargeImageText
     SImageTextS.value = userData.SmallImageText
     LImageKeyS.value = userData.LargeImageKey
-    SImageKeyS.value = userData.SmallImageKey
+    SImageKeyS.value = userData.SmallImageKey */
+}
+
+/*Field Profile Tab */
+
+function openProfileMenu () {
+    var fieldProfilesMenu = document.getElementById('field-profiles');
+    let profileList = document.getElementById('profileList');
+
+    fieldProfilesMenu.style.visibility = 'visible';
+
+    profileCache = [];
+
+    for (var i in userData)
+        profileCache.push(i);
+
+    console.log(profileCache);
+
+    profileCache.forEach(function (arrayItem) {
+        let fieldProfile = document.createElement('li');
+
+        fieldProfile.className = `fieldProfile ${arrayItem}`;
+        fieldProfile.id = `fieldProfile ${arrayItem}`;
+
+        fieldProfile.addEventListener('click', (onmousedown) => {
+            loadData(`${arrayItem}`);
+        });
+
+        fieldProfile.textContent = `${arrayItem}`
+
+        profileList.appendChild(fieldProfile);
+    });
+}
+
+function closeProfileMenu () {
+    var fieldProfilesMenu = document.getElementById('field-profiles');
+    var createProfileButton = document.getElementById('create-profile-button');
+
+    fieldProfilesMenu.style.visibility = 'hidden';
+
+    profileCache.forEach(function (arrayItem) {
+        var fieldProfiles = document.getElementById(`fieldProfile ${arrayItem}`);
+
+        fieldProfiles.remove();
+    });
 }

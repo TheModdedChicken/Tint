@@ -4,16 +4,32 @@
     <title>Tint</title>
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body>
+<body class="main-body">
     <div style="position: absolute; width: 100%; height: 100%; border-radius: 14px; background: #111111; color: #cccccc; z-index: -100;"></div>
     <script src="index.js"></script>
     <header style="overflow: hidden;">
         <div class="header-options" style="position: relative; float: left; border-radius: 20px; background: #e66060; width: 10px; height: 10px; cursor: pointer;" onclick="closeApp();"></div>
         <div class="header-options" style="position: relative; float: left; border-radius: 20px; background: #efc03d; width: 10px; height: 10px; cursor: pointer;" onclick="minimizeApp();"></div>
         <!--div class="header-options" style="position: relative; float: left; border-radius: 20px; background: #60c34a; width: 10px; height: 10px; cursor: pointer;" onclick="maximizeApp()"></div-->
+        <button class="settings-button" style="position: relative; border: none; background: #11111100; color: white; height:fit-content; width:fit-content; float: right; top: -5px; right: -8px; cursor: pointer; border: none; outline: none; -webkit-app-region: no-drag;">
+            <img src="cog-solid.svg" alt="settings" style="height: 20px; width: 20px;">
+        </button>
     </header>
+    <div class="field-profiles" id="field-profiles" style="position:absolute; top: 35px; height: 665px; width: 500px; border-radius: 14px; background: #111111c5; z-index: 500; visibility: hidden;">
+        <div class="field-selector-div">
+            <nav>
+                <ul id="profileList">
+                    <li class="create-profile-button" id="create-profile-button">Create New Profile</li>
+                </ul>
+            </nav>
+        </div>
+        <!--button class="field-save-button" id="field-save-button" onclick="saveCurrentFields();" style="float: left;">Save Profile</button>
+        <button class="field-load-button" id="field-load-button" onclick="loadData();">Load Profile</button-->
+        <button class="field-cancel-button" id="field-cancel-button" onclick="closeProfileMenu();">Back</button>
+    </div>
     <div class="main" id="main">
         <div class="rpc-run-config">
             <input class="client-id-input" id="client-id-input" placeholder="Client ID" type="text" spellcheck="false"></input>
@@ -45,10 +61,7 @@
             <input class="client-id-SImageText" id="client-id-SImageText" placeholder="Idle" type="text" spellcheck="false"></input>
         </div>
 
-        <div style="position: relative; top: 235px; margin: auto; float: left;">
-            <button class="client-save-button" id="client-save-button" onclick="saveCurrentFields();" style="float: left;">Save Fields</button>
-            <button class="client-load-button" id="client-load-button" onclick="loadData();">Load Fields</button>
-        </div>
+        <button class="field-profiles-button" id="field-profiles-button" onclick="openProfileMenu();" style="float: left;">Field Profiles</button>
     </div>
 </body>
 </html>

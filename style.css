@@ -200,6 +200,12 @@ h2, p {
     font-weight: 600;
     outline: none;
     float: left;
+
+    transition: all .1s ease-in;
+}
+
+.client-id-button:hover {
+    background-color: #50a33e;
 }
 
 .client-id-reload {
@@ -223,6 +229,12 @@ h2, p {
     font-weight: 600;
     outline: none;
     visibility: hidden;
+
+    transition: all .1s ease-in;
+}
+
+.client-id-reload:hover {
+    background-color: #d6ac37;
 }
 
 .client-id-stop {
@@ -247,6 +259,12 @@ h2, p {
     font-weight: 600;
     outline: none;
     visibility: hidden;
+
+    transition: all .1s ease-in;
+}
+
+.client-id-stop:hover {
+    background-color: #c05151;
 }
 
 /*
@@ -446,7 +464,58 @@ h2, p {
     float: left;
 }
 
-.client-save-button {
+/* Field Profile Manager */
+
+.field-profiles-button {
+    position: relative;
+    background-color: #4a70c3;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: #fff;
+    margin: auto;
+    cursor: pointer;
+    border-radius: 4px;
+    resize: none;
+    outline: none;
+    width: 177px;
+    height: 35px;
+    left: 160px;
+    top: 240px;
+    font-weight: 600;
+    outline: none;
+    float: left;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+    transition: all .1s ease-in;
+}
+
+.field-profiles-button:hover {
+    background-color: #4060a7;
+}
+
+.field-selector-div {
+    position: relative;
+    top: 50px;
+    margin: auto;
+    width: 400px;
+    height: 460px;
+    background: #2e2e2e;
+    border-radius: 14px;
+    border-color: #222222;
+    overflow-y: scroll;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.field-selector-div::-webkit-scrollbar {
+    height: 0px;
+    width: 0px;
+    visibility: hidden;
+}
+
+.field-save-button {
     position: relative;
     background-color: #60c34a;
     border: none;
@@ -463,13 +532,20 @@ h2, p {
     width: 152px;
     height: 35px;
     left: 77px;
+    top: 130px;
     font-weight: 600;
     outline: none;
     float: left;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+    transition: all .1s ease-in;
 }
 
-.client-load-button {
+.field-save-button:hover {
+    background-color: #50a33e;
+}
+
+.field-load-button {
     position: relative;
     background-color: #4a70c3;
     border: none;
@@ -486,8 +562,106 @@ h2, p {
     width: 152px;
     height: 35px;
     left: 117px;
+    top: 130px;
     font-weight: 600;
     outline: none;
-    float: left;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+    transition: all .1s ease-in;
 }
+
+.field-load-button:hover {
+    background-color: #4060a7;
+}
+
+.field-cancel-button {
+    position: relative;
+    background-color: #e66060;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: #fff;
+    margin: auto;
+    cursor: pointer;
+    border-radius: 4px;
+    resize: none;
+    outline: none;
+    width: 152px;
+    height: 35px;
+    top: 101px;
+    left: 173px;
+    font-weight: 600;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+    transition: all .1s ease-in;
+}
+
+.field-cancel-button:hover {
+    background-color: #c05151;
+}
+
+.create-profile-button {
+    background-color: #50a33e81;
+    border: none;
+    padding: 14px 8px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Inter';
+    color: rgb(168, 168, 168);
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+    top: 7px;
+    left: 10px;
+    resize: none;
+    outline: none;
+    width: 360px;
+    height: 20px;
+    float: left;
+
+    transition: all .1s ease-in;
+}
+
+.create-profile-button:hover {
+    color: white;
+    background-color: #60c34a81;
+}
+
+.fieldProfile {
+    background-color: #272727;
+    border: none;
+    padding: 14px 8px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Inter';
+    color: rgb(168, 168, 168);
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+    top: 7px;
+    left: 10px;
+    resize: none;
+    outline: none;
+    width: 360px;
+    height: 17px;
+    float: left;
+
+    transition: all .1s ease-in;
+}
+
+.fieldProfile:hover {
+    color: black;
+    background: #f8f8f856;
+}
+
+
+/* Settings Tab */
