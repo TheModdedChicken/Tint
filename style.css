@@ -1075,4 +1075,89 @@ h2, p {
     background-color: #c05151;
 }
 
+.profile-overwritename-input {
+    background-color: #272727;
+    border: none;
+    padding: 14px 8px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: rgb(168, 168, 168);
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+    top: 30px;
+    left: 10px;
+    resize: none;
+    outline: none;
+    width: 375px;
+    height: 40px;
+}
+
+.profile-overwrite-button {
+    background-color: #60c34a;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: #fff;
+    margin: auto;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+    top: 45px;
+    left: 30px;
+    resize: none;
+    outline: none;
+    width: 152px;
+    height: 30px;
+    font-weight: 600;
+    outline: none;
+    float: left;
+
+    transition: color .1s ease-in;
+    -webkit-transition: background-color .1s ease-in;
+    -ms-transition: background-color .1s ease-in;
+    transition: background-color .1s ease-in;
+}
+
+.profile-overwrite-button:hover {
+    background-color: #50a33e;
+}
+
+.profile-overwritecancel-button {
+    background-color: #e66060;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: #fff;
+    margin: auto;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+    top: 45px;
+    left: 65px;
+    resize: none;
+    outline: none;
+    width: 152px;
+    height: 30px;
+    font-weight: 600;
+    outline: none;
+    float: left;
+
+    transition: color .1s ease-in;
+    -webkit-transition: background-color .1s ease-in;
+    -ms-transition: background-color .1s ease-in;
+    transition: background-color .1s ease-in;
+}
+
+.profile-overwritecancel-button:hover {
+    background-color: #c05151;
+}
+
 /* Settings Tab */

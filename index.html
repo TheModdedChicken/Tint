@@ -14,9 +14,9 @@
         <div class="header-options" style="position: relative; float: left; border-radius: 20px; background: #e66060; width: 10px; height: 10px; cursor: pointer;" onclick="closeApp();"></div>
         <div class="header-options" style="position: relative; float: left; border-radius: 20px; background: #efc03d; width: 10px; height: 10px; cursor: pointer;" onclick="minimizeApp();"></div>
         <!--div class="header-options" style="position: relative; float: left; border-radius: 20px; background: #60c34a; width: 10px; height: 10px; cursor: pointer;" onclick="maximizeApp()"></div-->
-        <button class="settings-button" style="position: relative; border: none; background: #11111100; color: white; height:fit-content; width:fit-content; float: right; top: -5px; right: -8px; cursor: pointer; border: none; outline: none; -webkit-app-region: no-drag;">
+        <!--button class="settings-button" style="position: relative; border: none; background: #11111100; color: white; height:fit-content; width:fit-content; float: right; top: -5px; right: -8px; cursor: pointer; border: none; outline: none; -webkit-app-region: no-drag;">
             <img src="cog-solid.svg" alt="settings" style="height: 20px; width: 20px;">
-        </button>
+        </button-->
     </header>
     <div class="field-profiles" id="field-profiles" style="position:absolute; top: 35px; height: 665px; width: 500px; border-radius: 14px; background: #111111c5; z-index: 500; visibility: hidden;">
         <div class="field-selector-div" id="field-selector-div" style="visibility: hidden;">
@@ -30,9 +30,9 @@
         <div class="field-profile-editor-div" id="field-profile-editor-div" style="visibility: hidden;">
             <div class="profile-settings" id="profile-settings" style="position: absolute; top: -5px; visibility: hidden;">
                 <h2 id="profile-settings-text" style="position: relative; top: 20px; text-align: center; font-size: 20px; font-family: 'Inter'; font-weight: 500;"></h2>
-                <button class="profile-settings-overwrite-button" id="profile-settings-delete-button" onclick="" style="float: left;">Overwrite Profile</button>
+                <button class="profile-settings-overwrite-button" id="profile-settings-delete-button" onclick="openMenu('ProfileSettingsMenu', 'OverwriteProfileMenu');" style="float: left;">Overwrite Profile</button>
                 <button class="profile-settings-load-button" id="profile-settings-cancel-button" onclick="openMenu('ProfileSettingsMenu', 'LoadProfileMenu');" style="float: left;">Load Profile</button>
-                <button class="profile-settings-delete-button" id="profile-settings-delete-button" onclick="" style="float: left;">Delete Profile</button>
+                <button class="profile-settings-delete-button" id="profile-settings-delete-button" onclick="openMenu('ProfileSettingsMenu', 'DeleteProfileMenu');" style="float: left;">Delete Profile</button>
                 <button class="profile-settings-cancel-button" id="profile-settings-cancel-button" onclick="closeMenu('ProfileSettingsMenu', 'ProfileMenu');" style="float: left;">Cancel</button>
             </div>
 
@@ -53,12 +53,17 @@
             <div class="delete-profile-confirm" id="delete-profile-confirm" style="position: absolute; top: -5px; visibility: hidden;">
                 <h2 style="position: relative; top: 20px; text-align: center; font-size: 20px; font-family: 'Inter'; font-weight: 500;">Delete Profile</h2>
                 <input class="profile-deletename-input" id="profile-deletename-input" placeholder="Profile Name" type="text" spellcheck="false" maxlength="20" onmousedown="return false;"></input>
-                <button class="profile-delete-button" id="profile-delete-button" onclick="" style="float: left;">Delete Profile</button>
+                <button class="profile-delete-button" id="profile-delete-button" onclick="deleteProfile();" style="float: left;">Delete Profile</button>
                 <button class="profile-deletecancel-button" id="profile-deletecancel-button" onclick="closeMenu('DeleteProfileMenu', 'ProfileMenu');" style="float: left;">Cancel</button>
             </div>
+
+            <div class="overwrite-profile-confirm" id="overwrite-profile-confirm" style="position: absolute; top: -5px; visibility: hidden;">
+                <h2 style="position: relative; top: 20px; text-align: center; font-size: 20px; font-family: 'Inter'; font-weight: 500;">Overwrite Profile</h2>
+                <input class="profile-overwritename-input" id="profile-overwritename-input" placeholder="Profile Name" type="text" spellcheck="false" maxlength="20" onmousedown="return false;"></input>
+                <button class="profile-overwrite-button" id="profile-overwrite-button" onclick="overwriteProfile();" style="float: left;">Overwrite Profile</button>
+                <button class="profile-overwritecancel-button" id="profile-overwritecancel-button" onclick="closeMenu('OverwriteProfileMenu', 'ProfileMenu');" style="float: left;">Cancel</button>
+            </div>
         </div>
-        <!--button class="field-save-button" id="field-save-button" onclick="saveCurrentFields();" style="float: left;">Save Profile</button>
-        <button class="field-load-button" id="field-load-button" onclick="loadData();">Load Profile</button-->
         <button class="field-back-button" id="field-back-button" onclick="closeMenu('ProfileMenu', 'MainMenu');">Back</button>
     </div>
     <div class="main" id="main">

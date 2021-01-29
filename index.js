@@ -243,59 +243,6 @@ function createNewProfile() {
     });
 }
 
-function saveCurrentFields () {
-    var clientIdInput = document.getElementById('client-id-input').value;
-    var detailText = document.getElementById('client-id-detail').value;
-    var stateText = document.getElementById('client-id-state').value;
-    var LImageKey = document.getElementById('client-id-LImageKey').value;
-    var SImageKey = document.getElementById('client-id-SImageKey').value;
-    var LImageText = document.getElementById('client-id-LImageText').value;
-    var SImageText = document.getElementById('client-id-SImageText').value;
-
-    if (!clientIdInput) {
-        clientIdInput = '';
-    }
-
-    if (!detailText) {
-        detailText = '';
-    }
-
-    if (!stateText) {
-        stateText = '';
-    }
-
-    if (!LImageKey) {
-        LImageKey = '';
-    }
-
-    if (!LImageText) {
-        LImageText = '';
-    }
-
-    if (!SImageKey) {
-        SImageKey = '';
-    }
-
-    if (!SImageText) {
-        SImageText = '';
-    }
-
-    userData = {
-        ClientID: clientIdInput,
-        DetailText: detailText,
-        StateText: stateText,
-        LargeImageKey: LImageKey,
-        SmallImageKey: SImageKey,
-        LargeImageText: LImageText,
-        SmallImageText: SImageText
-    }
-    fs.writeFile("./userData.json", JSON.stringify (userData, null, 4), err => {
-        if (err) throw err;
-        return;
-    });
-
-}
-
 /* Loads profile data into fields */
 function loadProfile() {
     var loadProfilebar = document.getElementById('profile-loadname-input').value;
@@ -357,10 +304,78 @@ function reloadProfiles () {
     });
 }
 
+function deleteProfile () {
+    var profileSettingsDeleteMenuInput = document.getElementById('profile-deletename-input').value;
+
+    delete userData[profileSettingsDeleteMenuInput]
+
+    fs.writeFile("./userData.json", JSON.stringify (userData, null, 4), err => {
+        if (err) throw err;
+        reloadProfiles();
+        closeMenu('DeleteProfileMenu', 'ProfileMenu');
+    });
+}
+
+function overwriteProfile () {
+    var savename = document.getElementById('profile-overwritename-input').value;
+    var clientIdInput = document.getElementById('client-id-input').value;
+    var detailText = document.getElementById('client-id-detail').value;
+    var stateText = document.getElementById('client-id-state').value;
+    var LImageKey = document.getElementById('client-id-LImageKey').value;
+    var SImageKey = document.getElementById('client-id-SImageKey').value;
+    var LImageText = document.getElementById('client-id-LImageText').value;
+    var SImageText = document.getElementById('client-id-SImageText').value;
+
+    if (!clientIdInput) {
+        clientIdInput = '';
+    }
+
+    if (!detailText) {
+        detailText = '';
+    }
+
+    if (!stateText) {
+        stateText = '';
+    }
+
+    if (!LImageKey) {
+        LImageKey = '';
+    }
+
+    if (!LImageText) {
+        LImageText = '';
+    }
+
+    if (!SImageKey) {
+        SImageKey = '';
+    }
+
+    if (!SImageText) {
+        SImageText = '';
+    }
+
+    userData [savename] = {
+        ClientID: clientIdInput,
+        DetailText: detailText,
+        StateText: stateText,
+        LargeImageKey: LImageKey,
+        SmallImageKey: SImageKey,
+        LargeImageText: LImageText,
+        SmallImageText: SImageText
+    }
+    fs.writeFile("./userData.json", JSON.stringify (userData, null, 4), err => {
+        if (err) throw err;
+        reloadProfiles(true);
+        closeMenu('OverwriteProfileMenu', 'ProfileMenu');
+        return;
+    });
+}
+
 /* Menu Functions */
 
 function openMenu (currentMenu, goingTo, profile) {
 
+    // Entering Profile Menu
     if (currentMenu == 'MainMenu' && goingTo == 'ProfileMenu') {
         var fieldProfilesMenu = document.getElementById('field-profiles');
         let profileList = document.getElementById('profileList');
@@ -399,6 +414,7 @@ function openMenu (currentMenu, goingTo, profile) {
         return;
     }
 
+    // Entering Create Profile Menu
     if (currentMenu == 'ProfileMenu' && goingTo == 'CreateProfileMenu') {
         var fieldSelectorDiv = document.getElementById('field-selector-div');
         var fieldProfileBackButton = document.getElementById('field-back-button');
@@ -411,6 +427,7 @@ function openMenu (currentMenu, goingTo, profile) {
         createNewProfileConfirm.style.visibility = 'visible';
     }
 
+    // Entering Profile Settings Menu
     if (currentMenu == 'ProfileMenu' && goingTo == 'ProfileSettingsMenu') {
         var fieldSelectorDiv = document.getElementById('field-selector-div');
         var profileSettingsDiv = document.getElementById('profile-settings');
@@ -425,6 +442,7 @@ function openMenu (currentMenu, goingTo, profile) {
         fieldProfileBackButton.style.visibility = 'hidden';
     }
 
+    // Entering Load Profile Menu
     if (currentMenu == 'ProfileSettingsMenu' && goingTo == 'LoadProfileMenu') {
         var profileSettingsDiv = document.getElementById('profile-settings');
         var profileSettingsText = document.getElementById('profile-settings-text');
@@ -435,10 +453,35 @@ function openMenu (currentMenu, goingTo, profile) {
         profileSettingsDiv.style.visibility = 'hidden';
         profileSettingsLoadMenu.style.visibility = 'visible';
     }
+
+    // Entering Delete Profile Menu
+    if (currentMenu == 'ProfileSettingsMenu' && goingTo == 'DeleteProfileMenu') {
+        var profileSettingsText = document.getElementById('profile-settings-text');
+        var profileSettingsDeleteMenuInput = document.getElementById('profile-deletename-input');
+        var profileSettingsDiv = document.getElementById('profile-settings');
+        var profileSettingsDeleteMenu = document.getElementById('delete-profile-confirm');
+
+        profileSettingsDeleteMenuInput.value = profileSettingsText.textContent;
+        profileSettingsDiv.style.visibility = 'hidden';
+        profileSettingsDeleteMenu.style.visibility = 'visible';
+    }
+
+    // Entering Overwrite Profile Menu
+    if (currentMenu == 'ProfileSettingsMenu' && goingTo == 'OverwriteProfileMenu') {
+        var profileSettingsOverwriteMenuInput = document.getElementById('profile-overwritename-input');
+        var profileSettingsOverwriteMenu = document.getElementById('overwrite-profile-confirm');
+        var profileSettingsText = document.getElementById('profile-settings-text');
+        var profileSettingsDiv = document.getElementById('profile-settings');
+
+        profileSettingsOverwriteMenuInput.value = profileSettingsText.textContent;
+        profileSettingsDiv.style.visibility = 'hidden';
+        profileSettingsOverwriteMenu.style.visibility = 'visible';
+    }
 }
 
 function closeMenu (currentMenu, goingTo) {
 
+    // Leaving Profile Menu
     if (currentMenu == 'ProfileMenu' && goingTo == 'MainMenu') {
         var fieldProfilesMenu = document.getElementById('field-profiles');
         var fieldSelectorDiv = document.getElementById('field-selector-div');
@@ -458,6 +501,7 @@ function closeMenu (currentMenu, goingTo) {
         return;
     }
 
+    // Leaving Create Profile Menu
     if (currentMenu == 'CreateProfileMenu' && goingTo == 'ProfileMenu') {
         var savename = document.getElementById('profile-savename-input');
         var profileEditorDiv = document.getElementById('field-profile-editor-div');
@@ -476,6 +520,7 @@ function closeMenu (currentMenu, goingTo) {
         return;
     }
 
+    // Leaving Load Profile Menu
     if (currentMenu == 'LoadProfileMenu' && goingTo == 'ProfileMenu') {
         var loadProfileConfirmDiv = document.getElementById('load-profile-confirm');
         var fieldSelectorDiv = document.getElementById('field-selector-div');
@@ -488,6 +533,7 @@ function closeMenu (currentMenu, goingTo) {
         fieldProfileBackButton.style.visibility = 'visible';
     }
 
+    // Leaving Profile Settings Menu
     if (currentMenu == 'ProfileSettingsMenu' && goingTo == 'ProfileMenu') {
         var profileSettingsDiv = document.getElementById('profile-settings');
         var fieldProfileEditorDiv = document.getElementById('field-profile-editor-div');
@@ -496,6 +542,32 @@ function closeMenu (currentMenu, goingTo) {
 
         fieldProfileEditorDiv.style.visibility = 'hidden';
         profileSettingsDiv.style.visibility = 'hidden';
+        fieldSelectorDiv.style.visibility = 'visible';
+        fieldProfileBackButton.style.visibility = 'visible';
+    }
+
+    //Leaving Delete Profile Menu
+    if (currentMenu == 'DeleteProfileMenu' && goingTo == 'ProfileMenu') {
+        var profileSettingsDeleteMenu = document.getElementById('delete-profile-confirm');
+        var fieldProfileEditorDiv = document.getElementById('field-profile-editor-div');
+        var fieldSelectorDiv = document.getElementById('field-selector-div');
+        var fieldProfileBackButton = document.getElementById('field-back-button');
+
+        profileSettingsDeleteMenu.style.visibility = 'hidden';
+        fieldProfileEditorDiv.style.visibility = 'hidden';
+        fieldSelectorDiv.style.visibility = 'visible';
+        fieldProfileBackButton.style.visibility = 'visible';
+    }
+
+    //Leaving Overwrite Profile Menu
+    if (currentMenu == 'OverwriteProfileMenu' && goingTo == 'ProfileMenu') {
+        var profileSettingsOverwriteMenu = document.getElementById('overwrite-profile-confirm');
+        var fieldProfileEditorDiv = document.getElementById('field-profile-editor-div');
+        var fieldSelectorDiv = document.getElementById('field-selector-div');
+        var fieldProfileBackButton = document.getElementById('field-back-button');
+
+        profileSettingsOverwriteMenu.style.visibility = 'hidden';
+        fieldProfileEditorDiv.style.visibility = 'hidden';
         fieldSelectorDiv.style.visibility = 'visible';
         fieldProfileBackButton.style.visibility = 'visible';
     }
