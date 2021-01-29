@@ -185,7 +185,64 @@ function reloadRPC() {
     rpc.setActivity(completeData);
 }
 
-/* User data saving & loading functions */
+
+/* Profile data management */
+
+function createNewProfile() {
+    var savename = document.getElementById('profile-savename-input').value;
+    var clientIdInput = document.getElementById('client-id-input').value;
+    var detailText = document.getElementById('client-id-detail').value;
+    var stateText = document.getElementById('client-id-state').value;
+    var LImageKey = document.getElementById('client-id-LImageKey').value;
+    var SImageKey = document.getElementById('client-id-SImageKey').value;
+    var LImageText = document.getElementById('client-id-LImageText').value;
+    var SImageText = document.getElementById('client-id-SImageText').value;
+
+    if (!clientIdInput) {
+        clientIdInput = '';
+    }
+
+    if (!detailText) {
+        detailText = '';
+    }
+
+    if (!stateText) {
+        stateText = '';
+    }
+
+    if (!LImageKey) {
+        LImageKey = '';
+    }
+
+    if (!LImageText) {
+        LImageText = '';
+    }
+
+    if (!SImageKey) {
+        SImageKey = '';
+    }
+
+    if (!SImageText) {
+        SImageText = '';
+    }
+
+    userData [savename] = {
+        ClientID: clientIdInput,
+        DetailText: detailText,
+        StateText: stateText,
+        LargeImageKey: LImageKey,
+        SmallImageKey: SImageKey,
+        LargeImageText: LImageText,
+        SmallImageText: SImageText
+    }
+    fs.writeFile("./userData.json", JSON.stringify (userData, null, 4), err => {
+        if (err) throw err;
+        reloadProfiles();
+        closeMenu('CreateProfileMenu', 'ProfileMenu');
+        return;
+    });
+}
+
 function saveCurrentFields () {
     var clientIdInput = document.getElementById('client-id-input').value;
     var detailText = document.getElementById('client-id-detail').value;
@@ -239,9 +296,12 @@ function saveCurrentFields () {
 
 }
 
-function loadData(item) {
-    console.log(item);
-    /*
+/* Loads profile data into fields */
+function loadProfile() {
+    var loadProfilebar = document.getElementById('profile-loadname-input').value;
+
+    var profile = loadProfilebar;
+
     var clientIdInputS = document.getElementById('client-id-input');
     var detailTextS = document.getElementById('client-id-detail');
     var stateTextS = document.getElementById('client-id-state');
@@ -250,25 +310,29 @@ function loadData(item) {
     var LImageTextS = document.getElementById('client-id-LImageText');
     var SImageTextS = document.getElementById('client-id-SImageText');
 
-    clientIdInputS.value = userData.ClientID
-    detailTextS.value = userData.DetailText
-    stateTextS.value = userData.StateText
-    LImageTextS.value = userData.LargeImageText
-    SImageTextS.value = userData.SmallImageText
-    LImageKeyS.value = userData.LargeImageKey
-    SImageKeyS.value = userData.SmallImageKey */
+    clientIdInputS.value = userData[profile].ClientID
+    detailTextS.value = userData[profile].DetailText
+    stateTextS.value = userData[profile].StateText
+    LImageTextS.value = userData[profile].LargeImageText
+    SImageTextS.value = userData[profile].SmallImageText
+    LImageKeyS.value = userData[profile].LargeImageKey
+    SImageKeyS.value = userData[profile].SmallImageKey
+
+    closeMenu('LoadProfileMenu', 'ProfileMenu');
 }
 
-/*Field Profile Tab */
-
-function openProfileMenu () {
-    var fieldProfilesMenu = document.getElementById('field-profiles');
+/* Reloads Profile Cards */
+function reloadProfiles () {
     let profileList = document.getElementById('profileList');
 
-    fieldProfilesMenu.style.visibility = 'visible';
+    profileCache.forEach(function (arrayItem) {
+        var fieldProfiles = document.getElementById(`fieldProfile ${arrayItem}`);
+
+        fieldProfiles.remove();
+    });
 
     profileCache = [];
-
+    
     for (var i in userData)
         profileCache.push(i);
 
@@ -281,7 +345,10 @@ function openProfileMenu () {
         fieldProfile.id = `fieldProfile ${arrayItem}`;
 
         fieldProfile.addEventListener('click', (onmousedown) => {
-            loadData(`${arrayItem}`);
+            var loadProfilebar = document.getElementById('profile-loadname-input');
+
+            loadProfilebar.value = `${arrayItem}`;
+            openMenu('MainMenu','LoadProfileMenu');
         });
 
         fieldProfile.textContent = `${arrayItem}`
@@ -290,15 +357,121 @@ function openProfileMenu () {
     });
 }
 
-function closeProfileMenu () {
-    var fieldProfilesMenu = document.getElementById('field-profiles');
-    var createProfileButton = document.getElementById('create-profile-button');
+/* Menu Functions */
 
-    fieldProfilesMenu.style.visibility = 'hidden';
+function openMenu (currentMenu, goingTo) {
 
-    profileCache.forEach(function (arrayItem) {
-        var fieldProfiles = document.getElementById(`fieldProfile ${arrayItem}`);
+    if (currentMenu == 'MainMenu' && goingTo == 'ProfileMenu') {
+        var fieldProfilesMenu = document.getElementById('field-profiles');
+        let profileList = document.getElementById('profileList');
+        var fieldSelectorDiv = document.getElementById('field-selector-div');
+        var fieldProfileBackButton = document.getElementById('field-back-button');
+    
+        fieldProfilesMenu.style.visibility = 'visible';
+        fieldSelectorDiv.style.visibility = 'visible';
+        fieldProfileBackButton.style.visibility = 'visible';
+    
+        profileCache = [];
+    
+        for (var i in userData)
+            profileCache.push(i);
+    
+        console.log(profileCache);
+    
+        profileCache.forEach(function (arrayItem) {
+            let fieldProfile = document.createElement('li');
+    
+            fieldProfile.className = `fieldProfile ${arrayItem}`;
+            fieldProfile.id = `fieldProfile ${arrayItem}`;
+    
+            fieldProfile.addEventListener('click', (onmousedown) => {
+                var loadProfilebar = document.getElementById('profile-loadname-input');
 
-        fieldProfiles.remove();
-    });
+                loadProfilebar.value = `${arrayItem}`;
+                openMenu('ProfileMenu','LoadProfileMenu');
+            });
+    
+            fieldProfile.textContent = `${arrayItem}`
+    
+            profileList.appendChild(fieldProfile);
+        });
+
+        return;
+    }
+
+    if (currentMenu == 'ProfileMenu' && goingTo == 'CreateProfileMenu') {
+        var fieldSelectorDiv = document.getElementById('field-selector-div');
+        var fieldProfileBackButton = document.getElementById('field-back-button');
+        var createNewProfileConfirm = document.getElementById('create-new-profile-confirm');
+        var profileEditorDiv = document.getElementById('field-profile-editor-div');
+
+        fieldSelectorDiv.style.visibility = 'hidden';
+        fieldProfileBackButton.style.visibility = 'hidden';
+        profileEditorDiv.style.visibility = 'visible';
+        createNewProfileConfirm.style.visibility = 'visible';
+    }
+
+    if (currentMenu == 'ProfileMenu' && goingTo == 'LoadProfileMenu') {
+        var loadProfileConfirmDiv = document.getElementById('load-profile-confirm');
+        var fieldSelectorDiv = document.getElementById('field-selector-div');
+        var fieldProfileBackButton = document.getElementById('field-back-button');
+        var fieldProfileEditorDiv = document.getElementById('field-profile-editor-div');
+
+        fieldProfileEditorDiv.style.visibility = 'visible';
+        loadProfileConfirmDiv.style.visibility = 'visible';
+        fieldSelectorDiv.style.visibility = 'hidden';
+        fieldProfileBackButton.style.visibility = 'hidden';
+    }
+}
+
+function closeMenu (currentMenu, goingTo) {
+
+    if (currentMenu == 'ProfileMenu' && goingTo == 'MainMenu') {
+        var fieldProfilesMenu = document.getElementById('field-profiles');
+        var fieldSelectorDiv = document.getElementById('field-selector-div');
+        var fieldProfileBackButton = document.getElementById('field-back-button');
+        var createProfileButton = document.getElementById('create-profile-button');
+    
+        fieldProfilesMenu.style.visibility = 'hidden';
+        fieldSelectorDiv.style.visibility = 'hidden';
+        fieldProfileBackButton.style.visibility = 'hidden';
+    
+        profileCache.forEach(function (arrayItem) {
+            var fieldProfiles = document.getElementById(`fieldProfile ${arrayItem}`);
+    
+            fieldProfiles.remove();
+        });
+
+        return;
+    }
+
+    if (currentMenu == 'CreateProfileMenu' && goingTo == 'ProfileMenu') {
+        var savename = document.getElementById('profile-savename-input').value;
+        var profileEditorDiv = document.getElementById('field-profile-editor-div');
+        var fieldSelectorDiv = document.getElementById('field-selector-div');
+        var fieldProfileBackButton = document.getElementById('field-back-button');
+        var createNewProfileConfirm = document.getElementById('create-new-profile-confirm');
+        
+
+        savename = '';
+
+        createNewProfileConfirm.style.visibility = 'hidden';
+        profileEditorDiv.style.visibility = 'hidden';
+        fieldSelectorDiv.style.visibility = 'visible';
+        fieldProfileBackButton.style.visibility = 'visible';
+
+        return;
+    }
+
+    if (currentMenu == 'LoadProfileMenu' && goingTo == 'ProfileMenu') {
+        var loadProfileConfirmDiv = document.getElementById('load-profile-confirm');
+        var fieldSelectorDiv = document.getElementById('field-selector-div');
+        var fieldProfileBackButton = document.getElementById('field-back-button');
+        var fieldProfileEditorDiv = document.getElementById('field-profile-editor-div');
+
+        fieldProfileEditorDiv.style.visibility = 'hidden';
+        loadProfileConfirmDiv.style.visibility = 'hidden';
+        fieldSelectorDiv.style.visibility = 'visible';
+        fieldProfileBackButton.style.visibility = 'visible';
+    }
 }

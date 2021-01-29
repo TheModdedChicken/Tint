@@ -17,58 +17,22 @@
         "LargeImageText": "",
         "SmallImageText": ""
     },
-    "TestProfile3": {
-        "ClientID": "c",
-        "DetailText": "",
-        "StateText": "",
-        "LargeImageKey": "",
-        "SmallImageKey": "",
-        "LargeImageText": "",
-        "SmallImageText": ""
+    "ThonkerProfile": {
+        "ClientID": "745137499206189147",
+        "DetailText": "Competitive Thonking",
+        "StateText": "Using 2/5 Brain Cells",
+        "LargeImageKey": "thinkyjuice896",
+        "SmallImageKey": "braincell",
+        "LargeImageText": "Thonking",
+        "SmallImageText": "Idle"
     },
-    "Test Profile4": {
-        "ClientID": "c",
-        "DetailText": "",
-        "StateText": "",
-        "LargeImageKey": "",
-        "SmallImageKey": "",
-        "LargeImageText": "",
-        "SmallImageText": ""
-    },
-    "TestProfile5": {
-        "ClientID": "c",
-        "DetailText": "",
-        "StateText": "",
-        "LargeImageKey": "",
-        "SmallImageKey": "",
-        "LargeImageText": "",
-        "SmallImageText": ""
-    },
-    "Test Profile6": {
-        "ClientID": "c",
-        "DetailText": "",
-        "StateText": "",
-        "LargeImageKey": "",
-        "SmallImageKey": "",
-        "LargeImageText": "",
-        "SmallImageText": ""
-    },
-    "TestProfile7": {
-        "ClientID": "c",
-        "DetailText": "",
-        "StateText": "",
-        "LargeImageKey": "",
-        "SmallImageKey": "",
-        "LargeImageText": "",
-        "SmallImageText": ""
-    },
-    "Test Profile8": {
-        "ClientID": "c",
-        "DetailText": "",
-        "StateText": "",
-        "LargeImageKey": "",
-        "SmallImageKey": "",
-        "LargeImageText": "",
-        "SmallImageText": ""
+    "UhhhhLanePog?": {
+        "ClientID": "745137499206189147",
+        "DetailText": "Singleplayer Thonking",
+        "StateText": "Using -10/5 Brain Cells",
+        "LargeImageKey": "thinkyjuice896",
+        "SmallImageKey": "braincell",
+        "LargeImageText": "Thonking",
+        "SmallImageText": "Dead"
     }
 }

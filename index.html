@@ -19,16 +19,32 @@
         </button>
     </header>
     <div class="field-profiles" id="field-profiles" style="position:absolute; top: 35px; height: 665px; width: 500px; border-radius: 14px; background: #111111c5; z-index: 500; visibility: hidden;">
-        <div class="field-selector-div">
+        <div class="field-selector-div" id="field-selector-div" style="visibility: hidden;">
             <nav>
                 <ul id="profileList">
-                    <li class="create-profile-button" id="create-profile-button">Create New Profile</li>
+                    <li class="create-profile-button" id="create-profile-button" onclick="openMenu('ProfileMenu', 'CreateProfileMenu');">Create New Profile</li>
                 </ul>
             </nav>
         </div>
+
+        <div class="field-profile-editor-div" id="field-profile-editor-div" style="visibility: hidden;">
+            <div class="create-new-profile-confirm" id="create-new-profile-confirm" style="position: relative; visibility: hidden;">
+                <h2 style="position: relative; top: 20px; text-align: center; font-size: 20px; font-family: 'Inter'; font-weight: 500;">New Profile</h2>
+                <input class="profile-savename-input" id="profile-savename-input" placeholder="Save Name" type="text" spellcheck="false" maxlength="20"></input>
+                <button class="profile-createsave-button" id="profile-createsave-button" onclick="createNewProfile()" style="float: left;">Create Profile</button>
+                <button class="profile-createcancel-button" id="profile-createcancel-button" onclick="closeMenu('CreateProfileMenu', 'ProfileMenu');" style="float: left;">Cancel</button>
+            </div>
+
+            <div class="load-profile-confirm" id="load-profile-confirm" style="position: absolute; top: -5px; visibility: hidden;">
+                <h2 style="position: relative; top: 20px; text-align: center; font-size: 20px; font-family: 'Inter'; font-weight: 500;">Load Profile</h2>
+                <input class="profile-loadname-input" id="profile-loadname-input" placeholder="Profile Name" type="text" spellcheck="false" maxlength="20" onmousedown="return false;"></input>
+                <button class="profile-load-button" id="profile-load-button" onclick="loadProfile()" style="float: left;">Load Profile</button>
+                <button class="profile-loadcancel-button" id="profile-loadcancel-button" onclick="closeMenu('LoadProfileMenu', 'ProfileMenu');" style="float: left;">Cancel</button>
+            </div>
+        </div>
         <!--button class="field-save-button" id="field-save-button" onclick="saveCurrentFields();" style="float: left;">Save Profile</button>
         <button class="field-load-button" id="field-load-button" onclick="loadData();">Load Profile</button-->
-        <button class="field-cancel-button" id="field-cancel-button" onclick="closeProfileMenu();">Back</button>
+        <button class="field-back-button" id="field-back-button" onclick="closeMenu('ProfileMenu', 'MainMenu');">Back</button>
     </div>
     <div class="main" id="main">
         <div class="rpc-run-config">
@@ -61,7 +77,7 @@
             <input class="client-id-SImageText" id="client-id-SImageText" placeholder="Idle" type="text" spellcheck="false"></input>
         </div>
 
-        <button class="field-profiles-button" id="field-profiles-button" onclick="openProfileMenu();" style="float: left;">Field Profiles</button>
+        <button class="field-profiles-button" id="field-profiles-button" onclick="openMenu('MainMenu', 'ProfileMenu');" style="float: left;">Field Profiles</button>
     </div>
 </body>
 </html>

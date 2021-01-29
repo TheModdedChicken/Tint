@@ -201,7 +201,10 @@ h2, p {
     outline: none;
     float: left;
 
-    transition: all .1s ease-in;
+    transition: color .1s ease-in;
+    -webkit-transition: background-color .1s ease-in;
+    -ms-transition: background-color .1s ease-in;
+    transition: background-color .1s ease-in;
 }
 
 .client-id-button:hover {
@@ -230,7 +233,10 @@ h2, p {
     outline: none;
     visibility: hidden;
 
-    transition: all .1s ease-in;
+    transition: color .1s ease-in;
+    -webkit-transition: background-color .1s ease-in;
+    -ms-transition: background-color .1s ease-in;
+    transition: background-color .1s ease-in;
 }
 
 .client-id-reload:hover {
@@ -260,7 +266,10 @@ h2, p {
     outline: none;
     visibility: hidden;
 
-    transition: all .1s ease-in;
+    transition: color .1s ease-in;
+    -webkit-transition: background-color .1s ease-in;
+    -ms-transition: background-color .1s ease-in;
+    transition: background-color .1s ease-in;
 }
 
 .client-id-stop:hover {
@@ -510,7 +519,6 @@ h2, p {
 }
 
 .field-selector-div::-webkit-scrollbar {
-    height: 0px;
     width: 0px;
     visibility: hidden;
 }
@@ -574,7 +582,7 @@ h2, p {
     background-color: #4060a7;
 }
 
-.field-cancel-button {
+.field-back-button {
     position: relative;
     background-color: #e66060;
     border: none;
@@ -590,16 +598,19 @@ h2, p {
     outline: none;
     width: 152px;
     height: 35px;
-    top: 101px;
+    top: -59px;
     left: 173px;
     font-weight: 600;
     outline: none;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 
-    transition: all .1s ease-in;
+    transition: color .1s ease-in;
+    -webkit-transition: background-color .1s ease-in;
+    -ms-transition: background-color .1s ease-in;
+    transition: background-color .1s ease-in;
 }
 
-.field-cancel-button:hover {
+.field-back-button:hover {
     background-color: #c05151;
 }
 
@@ -625,7 +636,10 @@ h2, p {
     height: 20px;
     float: left;
 
-    transition: all .1s ease-in;
+    transition: color .1s ease-in;
+    -webkit-transition: background-color .1s ease-in;
+    -ms-transition: background-color .1s ease-in;
+    transition: background-color .1s ease-in;
 }
 
 .create-profile-button:hover {
@@ -655,7 +669,10 @@ h2, p {
     height: 17px;
     float: left;
 
-    transition: all .1s ease-in;
+    transition: color .1s ease-in;
+    -webkit-transition: background-color .1s ease-in;
+    -ms-transition: background-color .1s ease-in;
+    transition: background-color .1s ease-in;
 }
 
 .fieldProfile:hover {
@@ -663,5 +680,186 @@ h2, p {
     background: #f8f8f856;
 }
 
+.field-profile-editor-div {
+    position: relative;
+    top: -210px;
+    margin: auto;
+    width: 400px;
+    height: 160px;
+    background: #2e2e2e;
+    border-radius: 14px;
+    border-color: #222222;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.profile-savename-input {
+    background-color: #272727;
+    border: none;
+    padding: 14px 8px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: rgb(168, 168, 168);
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+    top: 30px;
+    left: 10px;
+    resize: none;
+    outline: none;
+    width: 375px;
+    height: 40px;
+}
+
+.profile-createsave-button {
+    background-color: #60c34a;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: #fff;
+    margin: auto;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+    top: 45px;
+    left: 30px;
+    resize: none;
+    outline: none;
+    width: 152px;
+    height: 30px;
+    font-weight: 600;
+    outline: none;
+    float: left;
+
+    transition: color .1s ease-in;
+    -webkit-transition: background-color .1s ease-in;
+    -ms-transition: background-color .1s ease-in;
+    transition: background-color .1s ease-in;
+}
+
+.profile-createsave-button:hover {
+    background-color: #50a33e;
+}
+
+.profile-createcancel-button {
+    background-color: #e66060;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: #fff;
+    margin: auto;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+    top: 45px;
+    left: 65px;
+    resize: none;
+    outline: none;
+    width: 152px;
+    height: 30px;
+    font-weight: 600;
+    outline: none;
+    float: left;
+
+    transition: color .1s ease-in;
+    -webkit-transition: background-color .1s ease-in;
+    -ms-transition: background-color .1s ease-in;
+    transition: background-color .1s ease-in;
+}
+
+.profile-createcancel-button:hover {
+    background-color: #c05151;
+}
+
+.profile-load-button {
+    background-color: #60c34a;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: #fff;
+    margin: auto;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+    top: 45px;
+    left: 30px;
+    resize: none;
+    outline: none;
+    width: 152px;
+    height: 30px;
+    font-weight: 600;
+    outline: none;
+    float: left;
+
+    transition: color .1s ease-in;
+    -webkit-transition: background-color .1s ease-in;
+    -ms-transition: background-color .1s ease-in;
+    transition: background-color .1s ease-in;
+}
+
+.profile-load-button:hover {
+    background-color: #50a33e;
+}
+
+.profile-loadcancel-button {
+    background-color: #e66060;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: #fff;
+    margin: auto;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+    top: 45px;
+    left: 65px;
+    resize: none;
+    outline: none;
+    width: 152px;
+    height: 30px;
+    font-weight: 600;
+    outline: none;
+    float: left;
+
+    transition: color .1s ease-in;
+    -webkit-transition: background-color .1s ease-in;
+    -ms-transition: background-color .1s ease-in;
+    transition: background-color .1s ease-in;
+}
+
+.profile-loadcancel-button:hover {
+    background-color: #c05151;
+}
+
+.profile-loadname-input {
+    background-color: #272727;
+    border: none;
+    padding: 14px 8px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: rgb(168, 168, 168);
+    margin: 4px 2px;
+    cursor: default;
+    border-radius: 4px;
+    position: relative;
+    top: 30px;
+    left: 10px;
+    resize: none;
+    outline: none;
+    width: 375px;
+    height: 40px;
+}
 
 /* Settings Tab */
