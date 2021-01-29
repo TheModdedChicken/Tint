@@ -15,4 +15,4 @@ https://github.com/TheModdedChicken/Tint/releases/tag/v0.0.1-beta.1
 # What does everything mean?
 (Tutorial Incomplete - I will update this with a tutorial later)
 As of right now since I have not finished a tutorial on creating and using custom Rich Presences,
-so I will assume if you decide to download this you know how to create a Discord application and are able to find its Client ID.
+I will assume if you decide to download this you know how to create a Discord application and are able to find its Client ID.
