@@ -28,6 +28,14 @@
         </div>
 
         <div class="field-profile-editor-div" id="field-profile-editor-div" style="visibility: hidden;">
+            <div class="profile-settings" id="profile-settings" style="position: absolute; top: -5px; visibility: hidden;">
+                <h2 id="profile-settings-text" style="position: relative; top: 20px; text-align: center; font-size: 20px; font-family: 'Inter'; font-weight: 500;"></h2>
+                <button class="profile-settings-overwrite-button" id="profile-settings-delete-button" onclick="" style="float: left;">Overwrite Profile</button>
+                <button class="profile-settings-load-button" id="profile-settings-cancel-button" onclick="openMenu('ProfileSettingsMenu', 'LoadProfileMenu');" style="float: left;">Load Profile</button>
+                <button class="profile-settings-delete-button" id="profile-settings-delete-button" onclick="" style="float: left;">Delete Profile</button>
+                <button class="profile-settings-cancel-button" id="profile-settings-cancel-button" onclick="closeMenu('ProfileSettingsMenu', 'ProfileMenu');" style="float: left;">Cancel</button>
+            </div>
+
             <div class="create-new-profile-confirm" id="create-new-profile-confirm" style="position: relative; visibility: hidden;">
                 <h2 style="position: relative; top: 20px; text-align: center; font-size: 20px; font-family: 'Inter'; font-weight: 500;">New Profile</h2>
                 <input class="profile-savename-input" id="profile-savename-input" placeholder="Save Name" type="text" spellcheck="false" maxlength="20"></input>
@@ -40,6 +48,13 @@
                 <input class="profile-loadname-input" id="profile-loadname-input" placeholder="Profile Name" type="text" spellcheck="false" maxlength="20" onmousedown="return false;"></input>
                 <button class="profile-load-button" id="profile-load-button" onclick="loadProfile()" style="float: left;">Load Profile</button>
                 <button class="profile-loadcancel-button" id="profile-loadcancel-button" onclick="closeMenu('LoadProfileMenu', 'ProfileMenu');" style="float: left;">Cancel</button>
+            </div>
+
+            <div class="delete-profile-confirm" id="delete-profile-confirm" style="position: absolute; top: -5px; visibility: hidden;">
+                <h2 style="position: relative; top: 20px; text-align: center; font-size: 20px; font-family: 'Inter'; font-weight: 500;">Delete Profile</h2>
+                <input class="profile-deletename-input" id="profile-deletename-input" placeholder="Profile Name" type="text" spellcheck="false" maxlength="20" onmousedown="return false;"></input>
+                <button class="profile-delete-button" id="profile-delete-button" onclick="" style="float: left;">Delete Profile</button>
+                <button class="profile-deletecancel-button" id="profile-deletecancel-button" onclick="closeMenu('DeleteProfileMenu', 'ProfileMenu');" style="float: left;">Cancel</button>
             </div>
         </div>
         <!--button class="field-save-button" id="field-save-button" onclick="saveCurrentFields();" style="float: left;">Save Profile</button>

@@ -237,7 +237,7 @@ function createNewProfile() {
     }
     fs.writeFile("./userData.json", JSON.stringify (userData, null, 4), err => {
         if (err) throw err;
-        reloadProfiles();
+        reloadProfiles(true);
         closeMenu('CreateProfileMenu', 'ProfileMenu');
         return;
     });
@@ -332,7 +332,7 @@ function reloadProfiles () {
     });
 
     profileCache = [];
-    
+
     for (var i in userData)
         profileCache.push(i);
 
@@ -348,7 +348,7 @@ function reloadProfiles () {
             var loadProfilebar = document.getElementById('profile-loadname-input');
 
             loadProfilebar.value = `${arrayItem}`;
-            openMenu('MainMenu','LoadProfileMenu');
+            openMenu('ProfileMenu','ProfileSettingsMenu', `${arrayItem}`);
         });
 
         fieldProfile.textContent = `${arrayItem}`
@@ -359,7 +359,7 @@ function reloadProfiles () {
 
 /* Menu Functions */
 
-function openMenu (currentMenu, goingTo) {
+function openMenu (currentMenu, goingTo, profile) {
 
     if (currentMenu == 'MainMenu' && goingTo == 'ProfileMenu') {
         var fieldProfilesMenu = document.getElementById('field-profiles');
@@ -388,7 +388,7 @@ function openMenu (currentMenu, goingTo) {
                 var loadProfilebar = document.getElementById('profile-loadname-input');
 
                 loadProfilebar.value = `${arrayItem}`;
-                openMenu('ProfileMenu','LoadProfileMenu');
+                openMenu('ProfileMenu','ProfileSettingsMenu', `${arrayItem}`);
             });
     
             fieldProfile.textContent = `${arrayItem}`
@@ -411,16 +411,29 @@ function openMenu (currentMenu, goingTo) {
         createNewProfileConfirm.style.visibility = 'visible';
     }
 
-    if (currentMenu == 'ProfileMenu' && goingTo == 'LoadProfileMenu') {
-        var loadProfileConfirmDiv = document.getElementById('load-profile-confirm');
+    if (currentMenu == 'ProfileMenu' && goingTo == 'ProfileSettingsMenu') {
         var fieldSelectorDiv = document.getElementById('field-selector-div');
+        var profileSettingsDiv = document.getElementById('profile-settings');
         var fieldProfileBackButton = document.getElementById('field-back-button');
         var fieldProfileEditorDiv = document.getElementById('field-profile-editor-div');
+        var profileSettingsText = document.getElementById('profile-settings-text');
 
+        profileSettingsText.textContent = `${profile}`;
         fieldProfileEditorDiv.style.visibility = 'visible';
-        loadProfileConfirmDiv.style.visibility = 'visible';
+        profileSettingsDiv.style.visibility = 'visible';
         fieldSelectorDiv.style.visibility = 'hidden';
         fieldProfileBackButton.style.visibility = 'hidden';
+    }
+
+    if (currentMenu == 'ProfileSettingsMenu' && goingTo == 'LoadProfileMenu') {
+        var profileSettingsDiv = document.getElementById('profile-settings');
+        var profileSettingsText = document.getElementById('profile-settings-text');
+        var profileSettingsLoadMenuInput = document.getElementById('profile-loadname-input');
+        var profileSettingsLoadMenu = document.getElementById('load-profile-confirm');
+
+        profileSettingsLoadMenuInput.value = profileSettingsText.textContent;
+        profileSettingsDiv.style.visibility = 'hidden';
+        profileSettingsLoadMenu.style.visibility = 'visible';
     }
 }
 
@@ -446,14 +459,14 @@ function closeMenu (currentMenu, goingTo) {
     }
 
     if (currentMenu == 'CreateProfileMenu' && goingTo == 'ProfileMenu') {
-        var savename = document.getElementById('profile-savename-input').value;
+        var savename = document.getElementById('profile-savename-input');
         var profileEditorDiv = document.getElementById('field-profile-editor-div');
         var fieldSelectorDiv = document.getElementById('field-selector-div');
         var fieldProfileBackButton = document.getElementById('field-back-button');
         var createNewProfileConfirm = document.getElementById('create-new-profile-confirm');
         
 
-        savename = '';
+        savename.value = '';
 
         createNewProfileConfirm.style.visibility = 'hidden';
         profileEditorDiv.style.visibility = 'hidden';
@@ -471,6 +484,18 @@ function closeMenu (currentMenu, goingTo) {
 
         fieldProfileEditorDiv.style.visibility = 'hidden';
         loadProfileConfirmDiv.style.visibility = 'hidden';
+        fieldSelectorDiv.style.visibility = 'visible';
+        fieldProfileBackButton.style.visibility = 'visible';
+    }
+
+    if (currentMenu == 'ProfileSettingsMenu' && goingTo == 'ProfileMenu') {
+        var profileSettingsDiv = document.getElementById('profile-settings');
+        var fieldProfileEditorDiv = document.getElementById('field-profile-editor-div');
+        var fieldSelectorDiv = document.getElementById('field-selector-div');
+        var fieldProfileBackButton = document.getElementById('field-back-button');
+
+        fieldProfileEditorDiv.style.visibility = 'hidden';
+        profileSettingsDiv.style.visibility = 'hidden';
         fieldSelectorDiv.style.visibility = 'visible';
         fieldProfileBackButton.style.visibility = 'visible';
     }
