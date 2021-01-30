@@ -4,7 +4,7 @@ var fs = require('fs');
 
 var isRPCon = false;
 
-userData = require ('./userData.json');
+userData = require ('../../userData.json');
 
 /* Window Menu Functions */
 function closeApp() {
