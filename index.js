@@ -198,6 +198,13 @@ function createNewProfile() {
     var LImageText = document.getElementById('client-id-LImageText').value;
     var SImageText = document.getElementById('client-id-SImageText').value;
 
+    var dateMonth = new Date().getMonth();
+    var dateYear = new Date().getFullYear();
+
+    if (savename == '') {
+        savename = `Save - ${dateMonth + 1}/${dateYear}`;
+    }
+
     if (!clientIdInput) {
         clientIdInput = '';
     }
