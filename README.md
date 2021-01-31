@@ -9,8 +9,10 @@ don't have to go through the hassle of filling in the RPC details you want every
 (This isn't anything special but its a feature nontheless)
 
 # Want an early build?
-Sure! You can find the latest build here:
-https://github.com/TheModdedChicken/Tint/releases/tag/v0.0.1-beta.1
+The most recent release was removed because of a major bug that stopped profiles from working.
+I will be releasing a patch shortly though so look out for that.
+~~Sure! You can find the latest build here:
+https://github.com/TheModdedChicken/Tint/releases/tag/v0.0.1-beta.1~~
 
 # What does everything mean?
 (Tutorial Incomplete - I will update this with a tutorial later)
