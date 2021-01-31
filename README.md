@@ -8,6 +8,15 @@ What are "Field Profiles" you may ask? Well field profiles allow you to store th
 don't have to go through the hassle of filling in the RPC details you want everytime you launch the application.
 (This isn't anything special but its a feature nontheless)
 
+**Usable Fields**:
+- Client ID
+- Detail
+- State
+- Small Image Key
+- Large Image Key
+- Small Image Text
+- Large Image Text
+
 # Want an early build?
 Sure! You can find the latest build here:
 https://github.com/TheModdedChicken/Tint/releases/tag/v1.0.0-beta.2
