@@ -4,8 +4,13 @@
   "description": "Tint is a Discord RPC manager for windows looking to create a modern, user friendly rich presence interface.",
   "main": "main.js",
   "files": [
-    "**/*",
-    "buildResources/icon.*"
+    "buildResources/icon.*",
+    "./Tint.ico",
+    "./style.css",
+    "./main.js",
+    "./LICENSE",
+    "./index.js",
+    "./index.html"
   ],
   "dependencies": {
     "discord-rpc": "^3.1.4",
@@ -25,12 +30,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron-forge start",
-    "package": "electron-forge package",
+    "package": "electron-packager 'D:\\Program Files\\Electron Apps\\Tint' Tint --all --icon='D:\\Program Files\\Electron Apps\\Tint\\Tint.ico' --out='D:\\Program Files\\Electron Apps\\TintExtraFiles\\Builds'",
     "make": "electron-forge make"
   },
   "keywords": [],
   "author": "TheModdedChicken",
-  "license": "GPL-3.0",
+  "license": "LGPL-2.1",
   "config": {
     "forge": {
       "packagerConfig": {},

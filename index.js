@@ -1,10 +1,35 @@
 const RPC = require('discord-rpc');
-const {ipcRenderer} = require('electron');
+const { ipcRenderer } = require('electron');
 var fs = require('fs');
 
 var isRPCon = false;
+var userData;
+var userFL;
 
-userData = require ('../../userData.json');
+ipcRenderer.send('userDataFolder');
+
+ipcRenderer.on('userDataFolder', (event, arg) => {
+    var UDExist = fs.existsSync(arg + '\\userData.json')
+
+    createUserData(UDExist, arg);
+})
+
+function createUserData (UDExist, arg) {
+    if (UDExist == true) {
+        userFL = arg + '\\userData.json';
+        userData = require(userFL);
+    } else if (UDExist == false) {
+        let newData = {};
+
+        fs.writeFile(arg + '\\userData.json', JSON.stringify (newData, null, 4), err => {
+            if (err) throw err;
+            userFL = arg + '\\userData.json';
+            userData = require(userFL);
+        });
+    }
+}
+
+var isWin = process.platform === "win32";
 
 /* Window Menu Functions */
 function closeApp() {
@@ -15,8 +40,26 @@ function minimizeApp() {
     ipcRenderer.send('minimize-me');
 }
 
-function maximizeApp() {
-    ipcRenderer.send('maximize-me');
+function minimizeTrayApp() {
+    ipcRenderer.send('minimizeTray-me');
+}
+
+if (isWin == true) {
+    var macButtonClose = document.getElementById('hom-close');
+    var macButtonMT = document.getElementById('hom-minTray');
+    var macButtonM = document.getElementById('hom-min');
+
+    macButtonClose.style.visibility = 'hidden';
+    macButtonM.style.visibility = 'hidden';
+    macButtonMT.style.visibility = 'hidden';
+} else {
+    var winButtonMT = document.getElementById('minTray-button');
+    var winButtonM = document.getElementById('min-button');
+    var winButtonClose = document.getElementById('close-button');
+
+    winButtonMT.style.visibility = 'hidden';
+    winButtonM.style.visibility = 'hidden';
+    winButtonClose.style.visibility = 'hidden';
 }
 
 /* RPC Load Functions */
@@ -200,9 +243,10 @@ function createNewProfile() {
 
     var dateMonth = new Date().getMonth();
     var dateYear = new Date().getFullYear();
+    var dateTime = new Date().getMilliseconds();
 
     if (savename == '') {
-        savename = `Save - ${dateMonth + 1}/${dateYear}`;
+        savename = `Save - ${dateMonth + 1}/${dateYear} (${dateTime})`;
     }
 
     if (!clientIdInput) {
@@ -242,7 +286,7 @@ function createNewProfile() {
         LargeImageText: LImageText,
         SmallImageText: SImageText
     }
-    fs.writeFile("./userData.json", JSON.stringify (userData, null, 4), err => {
+    fs.writeFile(userFL, JSON.stringify (userData, null, 4), err => {
         if (err) throw err;
         reloadProfiles(true);
         closeMenu('CreateProfileMenu', 'ProfileMenu');
@@ -298,7 +342,7 @@ function reloadProfiles () {
         fieldProfile.className = `fieldProfile ${arrayItem}`;
         fieldProfile.id = `fieldProfile ${arrayItem}`;
 
-        fieldProfile.addEventListener('click', (onmousedown) => {
+        fieldProfile.addEventListener('click', (onmouseup) => {
             var loadProfilebar = document.getElementById('profile-loadname-input');
 
             loadProfilebar.value = `${arrayItem}`;
@@ -316,7 +360,7 @@ function deleteProfile () {
 
     delete userData[profileSettingsDeleteMenuInput]
 
-    fs.writeFile("./userData.json", JSON.stringify (userData, null, 4), err => {
+    fs.writeFile(userFL, JSON.stringify (userData, null, 4), err => {
         if (err) throw err;
         reloadProfiles();
         closeMenu('DeleteProfileMenu', 'ProfileMenu');
@@ -370,7 +414,7 @@ function overwriteProfile () {
         LargeImageText: LImageText,
         SmallImageText: SImageText
     }
-    fs.writeFile("./userData.json", JSON.stringify (userData, null, 4), err => {
+    fs.writeFile(userFL, JSON.stringify (userData, null, 4), err => {
         if (err) throw err;
         reloadProfiles(true);
         closeMenu('OverwriteProfileMenu', 'ProfileMenu');

@@ -97,10 +97,14 @@ input, select {
 
 /* My Custom Styling */
 
+* {
+    font-family: "Inter";
+}
+
 header {
     background-color: #222222;
     padding: 12px;
-    font-family: 'Inter', sans-serif;
+    
     text-align: center;
     font-size: 150%;
     font-weight: 100;
@@ -113,20 +117,72 @@ header {
     margin-left: 0px;
 }
 
-.header-options {
-    margin-left: 10px;
+.header-options-mac {
+    position: relative;
+    border-radius: 20px;
+    float: left;
+    margin-right: 10px;
     -webkit-app-region: no-drag;
+    cursor: pointer;
+    height: 10px;
+    width: 10px;
+}
+
+.header-options-win {
+    position: relative;
+    left: 12px;
+    float: right;
+    margin-left: 0px;
+    -webkit-app-region: no-drag;
+    cursor: pointer;
+    bottom: 12px;
+    width: 42px;
+    height: 35px;
+
+    transition: background-color 0.1s ease-in-out;
+}
+
+.header-options-win .icon {
+    position: relative;
+    top: 12px;
+}
+
+.header-options-win:hover {
+    background-color: rgba(255, 255, 255, 0.295);
+}
+
+.header-options-win-red {
+    position: relative;
+    left: 12px;
+    float: right;
+    margin-left: 0px;
+    -webkit-app-region: no-drag;
+    cursor: pointer;
+    bottom: 12px;
+    width: 42px;
+    height: 35px;
+
+    transition: background-color 0.1s ease-in-out;
+}
+
+.header-options-win-red .icon {
+    position: relative;
+    top: 12px;
+}
+
+.header-options-win-red:hover {
+    background-color: rgba(255, 0, 0, 0.486);
 }
 
 body {
     color: #cccccc;
-    overflow: hidden;
+    overflow:hidden;
 }
 
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
-    font-family: 'Inter', sans-serif;
+    
     appearance: none;       /* Remove default arrow */
     background-image: url(...);   /* Add custom arrow */
     background-color: #222222;
@@ -141,7 +197,7 @@ select {
 
 h2, p {
     color: white;
-    font-family: 'Inter', sans-serif;
+    
 }
 
 .rpc-run-config {
@@ -164,7 +220,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: rgb(168, 168, 168);
     margin: 4px 2px;
     cursor: pointer;
@@ -185,7 +241,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: #fff;
     margin: 4px 2px;
     cursor: pointer;
@@ -201,14 +257,16 @@ h2, p {
     outline: none;
     float: left;
 
-    transition: color .1s ease-in;
-    -webkit-transition: background-color .1s ease-in;
-    -ms-transition: background-color .1s ease-in;
-    transition: background-color .1s ease-in;
+    transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
 }
 
 .client-id-button:hover {
     background-color: #50a33e;
+    transform: scale(1.03);
+}
+
+.client-id-button:active {
+    transform: scale(0.97);
 }
 
 .client-id-reload {
@@ -217,7 +275,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: #fff;
     margin: 4px 2px;
     cursor: pointer;
@@ -233,14 +291,16 @@ h2, p {
     outline: none;
     visibility: hidden;
 
-    transition: color .1s ease-in;
-    -webkit-transition: background-color .1s ease-in;
-    -ms-transition: background-color .1s ease-in;
-    transition: background-color .1s ease-in;
+    transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
 }
 
 .client-id-reload:hover {
     background-color: #d6ac37;
+    transform: scale(1.03);
+}
+
+.client-id-reload:active {
+    transform: scale(0.97);
 }
 
 .client-id-stop {
@@ -249,7 +309,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: #fff;
     margin: 4px 2px;
     cursor: pointer;
@@ -266,14 +326,16 @@ h2, p {
     outline: none;
     visibility: hidden;
 
-    transition: color .1s ease-in;
-    -webkit-transition: background-color .1s ease-in;
-    -ms-transition: background-color .1s ease-in;
-    transition: background-color .1s ease-in;
+    transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
 }
 
 .client-id-stop:hover {
     background-color: #c05151;
+    transform: scale(1.03);
+}
+
+.client-id-stop:active {
+    transform: scale(0.97);
 }
 
 /*
@@ -309,7 +371,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: rgb(168, 168, 168);
     margin: 4px 2px;
     cursor: pointer;
@@ -344,7 +406,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: rgb(168, 168, 168);
     margin: 4px 2px;
     cursor: pointer;
@@ -379,7 +441,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: rgb(168, 168, 168);
     margin: 4px 2px;
     cursor: pointer;
@@ -401,7 +463,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: rgb(168, 168, 168);
     margin: 4px 2px;
     cursor: pointer;
@@ -436,7 +498,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: rgb(168, 168, 168);
     margin: 4px 2px;
     cursor: pointer;
@@ -458,7 +520,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: rgb(168, 168, 168);
     margin: 4px 2px;
     cursor: pointer;
@@ -482,7 +544,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: #fff;
     margin: auto;
     cursor: pointer;
@@ -498,11 +560,16 @@ h2, p {
     float: left;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 
-    transition: all .1s ease-in;
+    transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
 }
 
 .field-profiles-button:hover {
     background-color: #4060a7;
+    transform: scale(1.03);
+}
+
+.field-profiles-button:active {
+    transform: scale(0.97);
 }
 
 .field-selector-div {
@@ -530,7 +597,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: #fff;
     margin: auto;
     cursor: pointer;
@@ -560,7 +627,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: #fff;
     margin: auto;
     cursor: pointer;
@@ -589,7 +656,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: #fff;
     margin: auto;
     cursor: pointer;
@@ -604,26 +671,28 @@ h2, p {
     outline: none;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 
-    transition: color .1s ease-in;
-    -webkit-transition: background-color .1s ease-in;
-    -ms-transition: background-color .1s ease-in;
-    transition: background-color .1s ease-in;
+    transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
 }
 
 .field-back-button:hover {
     background-color: #c05151;
+    transform: scale(1.03);
+}
+
+.field-back-button:active {
+    transform: scale(0.97);
 }
 
 .create-profile-button {
-    background-color: #50a33e81;
+    background-color: #60c34a;
     border: none;
     padding: 14px 8px;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
     font-weight: 400;
-    font-family: 'Inter';
-    color: rgb(168, 168, 168);
+    
+    color: white;
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 4px;
@@ -636,27 +705,30 @@ h2, p {
     height: 20px;
     float: left;
 
-    transition: color .1s ease-in;
-    -webkit-transition: background-color .1s ease-in;
-    -ms-transition: background-color .1s ease-in;
-    transition: background-color .1s ease-in;
+    transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
 }
 
 .create-profile-button:hover {
     color: white;
-    background-color: #60c34a81;
+    background-color: #60c34ae0;
+    transform: scale(1.03);
 }
 
+.create-profile-button:active {
+    transform: scale(0.97);
+}
+
+
 .fieldProfile {
-    background-color: #272727;
+    background-color: #484848;
     border: none;
     padding: 14px 8px;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
     font-weight: 400;
-    font-family: 'Inter';
-    color: rgb(168, 168, 168);
+    
+    color: rgb(197, 197, 197);
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 4px;
@@ -669,15 +741,17 @@ h2, p {
     height: 17px;
     float: left;
 
-    transition: color .1s ease-in;
-    -webkit-transition: background-color .1s ease-in;
-    -ms-transition: background-color .1s ease-in;
-    transition: background-color .1s ease-in;
+    transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
 }
 
 .fieldProfile:hover {
     color: black;
-    background: #f8f8f856;
+    background: #636363;
+    transform: scale(1.03);
+}
+
+.fieldProfile:active {
+    transform: scale(0.97);
 }
 
 .field-profile-editor-div {
@@ -698,7 +772,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: #fff;
     margin: auto;
     cursor: pointer;
@@ -714,14 +788,16 @@ h2, p {
     outline: none;
     float: left;
 
-    transition: color .1s ease-in;
-    -webkit-transition: background-color .1s ease-in;
-    -ms-transition: background-color .1s ease-in;
-    transition: background-color .1s ease-in;
+    transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
 }
 
 .profile-settings-overwrite-button:hover {
     background-color: #4060a7;
+    transform: scale(1.03);
+}
+
+.profile-settings-overwrite-button:active {
+    transform: scale(0.97);
 }
 
 .profile-settings-load-button {
@@ -730,7 +806,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: #fff;
     margin: auto;
     cursor: pointer;
@@ -746,14 +822,16 @@ h2, p {
     outline: none;
     float: left;
 
-    transition: color .1s ease-in;
-    -webkit-transition: background-color .1s ease-in;
-    -ms-transition: background-color .1s ease-in;
-    transition: background-color .1s ease-in;
+    transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
 }
 
 .profile-settings-load-button:hover {
     background-color: #4060a7;
+    transform: scale(1.03);
+}
+
+.profile-settings-load-button:active {
+    transform: scale(0.97);
 }
 
 .profile-settings-delete-button {
@@ -762,7 +840,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: #fff;
     margin: auto;
     cursor: pointer;
@@ -778,14 +856,16 @@ h2, p {
     outline: none;
     float: left;
 
-    transition: color .1s ease-in;
-    -webkit-transition: background-color .1s ease-in;
-    -ms-transition: background-color .1s ease-in;
-    transition: background-color .1s ease-in;
+    transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
 }
 
 .profile-settings-delete-button:hover {
     background-color: #c05151;
+    transform: scale(1.03);
+}
+
+.profile-settings-delete-button:active {
+    transform: scale(0.97);
 }
 
 .profile-settings-cancel-button {
@@ -794,7 +874,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: #fff;
     margin: auto;
     cursor: pointer;
@@ -810,14 +890,16 @@ h2, p {
     outline: none;
     float: left;
 
-    transition: color .1s ease-in;
-    -webkit-transition: background-color .1s ease-in;
-    -ms-transition: background-color .1s ease-in;
-    transition: background-color .1s ease-in;
+    transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
 }
 
 .profile-settings-cancel-button:hover {
     background-color: #c05151;
+    transform: scale(1.03);
+}
+
+.profile-settings-cancel-button:active {
+    transform: scale(0.97);
 }
 
 .profile-savename-input {
@@ -827,7 +909,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: rgb(168, 168, 168);
     margin: 4px 2px;
     cursor: pointer;
@@ -847,7 +929,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: #fff;
     margin: auto;
     cursor: pointer;
@@ -863,14 +945,16 @@ h2, p {
     outline: none;
     float: left;
 
-    transition: color .1s ease-in;
-    -webkit-transition: background-color .1s ease-in;
-    -ms-transition: background-color .1s ease-in;
-    transition: background-color .1s ease-in;
+    transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
 }
 
 .profile-createsave-button:hover {
     background-color: #50a33e;
+    transform: scale(1.03);
+}
+
+.profile-createsave-button:active {
+    transform: scale(0.97);
 }
 
 .profile-createcancel-button {
@@ -879,7 +963,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: #fff;
     margin: auto;
     cursor: pointer;
@@ -895,14 +979,16 @@ h2, p {
     outline: none;
     float: left;
 
-    transition: color .1s ease-in;
-    -webkit-transition: background-color .1s ease-in;
-    -ms-transition: background-color .1s ease-in;
-    transition: background-color .1s ease-in;
+    transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
 }
 
 .profile-createcancel-button:hover {
     background-color: #c05151;
+    transform: scale(1.03);
+}
+
+.profile-createcancel-button:active {
+    transform: scale(0.97);
 }
 
 .profile-load-button {
@@ -911,7 +997,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: #fff;
     margin: auto;
     cursor: pointer;
@@ -927,14 +1013,16 @@ h2, p {
     outline: none;
     float: left;
 
-    transition: color .1s ease-in;
-    -webkit-transition: background-color .1s ease-in;
-    -ms-transition: background-color .1s ease-in;
-    transition: background-color .1s ease-in;
+    transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
 }
 
 .profile-load-button:hover {
     background-color: #50a33e;
+    transform: scale(1.03);
+}
+
+.profile-load-button:active {
+    transform: scale(0.97);
 }
 
 .profile-loadcancel-button {
@@ -943,7 +1031,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: #fff;
     margin: auto;
     cursor: pointer;
@@ -959,14 +1047,16 @@ h2, p {
     outline: none;
     float: left;
 
-    transition: color .1s ease-in;
-    -webkit-transition: background-color .1s ease-in;
-    -ms-transition: background-color .1s ease-in;
-    transition: background-color .1s ease-in;
+    transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
 }
 
 .profile-loadcancel-button:hover {
     background-color: #c05151;
+    transform: scale(1.03);
+}
+
+.profile-loadcancel-button:active {
+    transform: scale(0.97);
 }
 
 .profile-loadname-input {
@@ -976,7 +1066,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: rgb(168, 168, 168);
     margin: 4px 2px;
     cursor: default;
@@ -997,7 +1087,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: rgb(168, 168, 168);
     margin: 4px 2px;
     cursor: default;
@@ -1017,7 +1107,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: #fff;
     margin: auto;
     cursor: pointer;
@@ -1033,14 +1123,16 @@ h2, p {
     outline: none;
     float: left;
 
-    transition: color .1s ease-in;
-    -webkit-transition: background-color .1s ease-in;
-    -ms-transition: background-color .1s ease-in;
-    transition: background-color .1s ease-in;
+    transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
 }
 
 .profile-delete-button:hover {
     background-color: #50a33e;
+    transform: scale(1.03);
+}
+
+.profile-delete-button:active {
+    transform: scale(0.97);
 }
 
 .profile-deletecancel-button {
@@ -1049,7 +1141,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: #fff;
     margin: auto;
     cursor: pointer;
@@ -1065,14 +1157,16 @@ h2, p {
     outline: none;
     float: left;
 
-    transition: color .1s ease-in;
-    -webkit-transition: background-color .1s ease-in;
-    -ms-transition: background-color .1s ease-in;
-    transition: background-color .1s ease-in;
+    transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
 }
 
 .profile-deletecancel-button:hover {
     background-color: #c05151;
+    transform: scale(1.03);
+}
+
+.profile-deletecancel-button:active {
+    transform: scale(0.97);
 }
 
 .profile-overwritename-input {
@@ -1082,7 +1176,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: rgb(168, 168, 168);
     margin: 4px 2px;
     cursor: pointer;
@@ -1102,7 +1196,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: #fff;
     margin: auto;
     cursor: pointer;
@@ -1118,14 +1212,16 @@ h2, p {
     outline: none;
     float: left;
 
-    transition: color .1s ease-in;
-    -webkit-transition: background-color .1s ease-in;
-    -ms-transition: background-color .1s ease-in;
-    transition: background-color .1s ease-in;
+    transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
 }
 
 .profile-overwrite-button:hover {
     background-color: #50a33e;
+    transform: scale(1.03);
+}
+
+.profile-overwrite-button:active {
+    transform: scale(0.97);
 }
 
 .profile-overwritecancel-button {
@@ -1134,7 +1230,7 @@ h2, p {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Inter';
+    
     color: #fff;
     margin: auto;
     cursor: pointer;
@@ -1150,14 +1246,17 @@ h2, p {
     outline: none;
     float: left;
 
-    transition: color .1s ease-in;
-    -webkit-transition: background-color .1s ease-in;
-    -ms-transition: background-color .1s ease-in;
-    transition: background-color .1s ease-in;
+    transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
 }
 
 .profile-overwritecancel-button:hover {
     background-color: #c05151;
+    transform: scale(1.03);
 }
+
+.profile-overwritecancel-button:active {
+    transform: scale(0.97);
+}
+
 
 /* Settings Tab */
