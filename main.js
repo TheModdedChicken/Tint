@@ -52,7 +52,8 @@ function createWindow () {
   });
 
   function createTray() {
-    let appIcon = new Tray("./Tint.ico");
+    var appPath = app.getAppPath();
+    let appIcon = new Tray(appPath + "\\Tint.ico");
     const contextMenu = Menu.buildFromTemplate([
       {
         label: 'Show', click: function () {
