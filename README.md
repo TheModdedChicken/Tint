@@ -19,7 +19,7 @@ don't have to go through the hassle of filling in the RPC details you want every
 
 # Want an early build?
 Sure! You can find the latest build here:
-https://github.com/TheModdedChicken/Tint/releases/tag/v1.0.0-beta.2
+https://github.com/TheModdedChicken/Tint/releases/latest
 
 # What does everything mean?
 (Tutorial Incomplete - I will update this with a tutorial later)
