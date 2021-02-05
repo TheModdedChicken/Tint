@@ -22,4 +22,4 @@ Sure! You can find the latest build here:
 https://github.com/TheModdedChicken/Tint/releases/latest
 
 # What does everything mean?
-[<Insert Tutorial Here>](https://github.com/TheModdedChicken/Tint/wiki/Getting-Started)
+[Insert Tutorial Here](https://github.com/TheModdedChicken/Tint/wiki/Getting-Started)
