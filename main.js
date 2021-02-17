@@ -1,6 +1,7 @@
 const { app, BrowserWindow, BrowserView, Menu, ipcMain, autoUpdater, Tray } = require('electron');
 
 function createWindow () {
+  var appPath = app.getAppPath();
   const win = new BrowserWindow({
     width: 500,
     height: 700,
@@ -14,7 +15,7 @@ function createWindow () {
     },
     frame: false,
     transparent: true,
-    icon: "./Tint.ico"
+    icon: appPath + "\\Tint.ico"
   })
 
   var winMaxed = win.isMaximized();
@@ -52,7 +53,6 @@ function createWindow () {
   });
 
   function createTray() {
-    var appPath = app.getAppPath();
     let appIcon = new Tray(appPath + "\\Tint.ico");
     const contextMenu = Menu.buildFromTemplate([
       {
