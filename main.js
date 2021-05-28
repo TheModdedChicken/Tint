@@ -29,7 +29,7 @@ function createWindow () {
 
   win.focus()
 
-  //win.webContents.openDevTools();
+  win.webContents.openDevTools();
 
   ipcMain.on('close-me', (evt, arg) => {
     app.quit()

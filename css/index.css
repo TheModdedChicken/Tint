@@ -1,0 +1,1168 @@
+@font-face {
+  font-family: Inter;
+  src: url('../assets/fonts/Inter/Inter-VariableFont_slnt\,wght.ttf');
+}
+
+* {
+  font-family: "Inter";
+}
+
+body {
+  color: #cccccc;
+  overflow:hidden;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  
+  appearance: none;
+  background-image: url(...);
+  background-color: #222222;
+  border: 0px;
+  height: 28px;
+  width: 100px;
+  text-align: center;
+  font-size: 100%;
+  font-weight: 600;
+  color: white;
+}
+
+h2, p {
+  color: white;
+  
+}
+
+.main-body-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  background: #111111;
+  color: #cccccc;
+  z-index: -100;
+}
+
+/* Main Header Styling */
+.main-header {
+  background-color: #222222;
+  padding: 12px;
+  
+  text-align: center;
+  font-size: 150%;
+  font-weight: 100;
+  color: #e9f1f9;
+  height: 10px;
+  -webkit-app-region: drag;
+
+  overflow: hidden;
+}
+
+.header-options:first-child {
+  margin-left: 0px;
+}
+
+.header-options-win {
+  position: relative;
+  left: 12px;
+  float: right;
+  margin-left: 0px;
+  -webkit-app-region: no-drag;
+  cursor: pointer;
+  bottom: 12px;
+  width: 42px;
+  height: 35px;
+
+  transition: background-color 0.1s ease-in-out;
+}
+
+.header-options-win .icon {
+  position: relative;
+  top: 12px;
+}
+
+.header-options-win:hover {
+  background-color: rgba(255, 255, 255, 0.295);
+}
+
+#close-button {
+  position: relative;
+  left: 12px;
+  float: right;
+  margin-left: 0px;
+  -webkit-app-region: no-drag;
+  cursor: pointer;
+  bottom: 12px;
+  width: 42px;
+  height: 35px;
+
+  transition: background-color 0.1s ease-in-out;
+}
+
+#close-button .icon {
+  position: relative;
+  top: 12px;
+}
+
+#close-button:hover {
+  background-color: rgba(255, 0, 0, 0.486);
+}
+
+/* Main Menu */
+
+.rpc-run-config {
+  position: relative;
+  top: 50px;
+  margin: auto;
+  width: 400px;
+  height: 50px;
+  background: #2e2e2e;
+  border-radius: 14px;
+  border-color: #222222;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.client-id-input {
+  background-color: #272727;
+  border: none;
+  padding: 14px 8px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: rgb(168, 168, 168);
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  top: 5px;
+  left: 10px;
+  resize: none;
+  outline: none;
+  width: 220px;
+  height: 65%;
+  float: left;
+}
+
+.client-id-button {
+  background-color: #60c34a;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: #fff;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  top: 5px;
+  left: 10px;
+  resize: none;
+  outline: none;
+  width: 152px;
+  height: 65%;
+  font-weight: 600;
+  outline: none;
+  float: left;
+
+  transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
+}
+
+.client-id-button:hover {
+  background-color: #50a33e;
+  transform: scale(1.03);
+}
+
+.client-id-button:active {
+  transform: scale(0.97);
+}
+
+.client-id-reload {
+  background-color: #efc03d;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: #fff;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  position: absolute;
+  top: 5px;
+  left: 233px;
+  resize: none;
+  outline: none;
+  width: 99px;
+  height: 65%;
+  font-weight: 600;
+  outline: none;
+  visibility: hidden;
+
+  transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
+}
+
+.client-id-reload:hover {
+  background-color: #d6ac37;
+  transform: scale(1.03);
+}
+
+.client-id-reload:active {
+  transform: scale(0.97);
+}
+
+.client-id-stop {
+  background-color: #e66060;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: #fff;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  resize: none;
+  outline: none;
+  width: 50px;
+  left: 335px;
+  height: 65%;
+  font-weight: 600;
+  outline: none;
+  visibility: hidden;
+
+  transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
+}
+
+.client-id-stop:hover {
+  background-color: #c05151;
+  transform: scale(1.03);
+}
+
+.client-id-stop:active {
+  transform: scale(0.97);
+}
+
+.rpc-main-config-detailBox {
+  position: relative;
+  top: 90px;
+  margin: auto;
+  width: 400px;
+  height: 50px;
+  background: #2e2e2e;
+  border-radius: 14px;
+  border-color: #222222;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.client-id-detail {
+  background-color: #272727;
+  border: none;
+  padding: 14px 8px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: rgb(168, 168, 168);
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  top: 5px;
+  left: 10px;
+  resize: none;
+  outline: none;
+  width: 375px;
+  height: 65%;
+  float: left;
+}
+
+.rpc-main-config-stateBox {
+  position: relative;
+  top: 130px;
+  margin: auto;
+  width: 400px;
+  height: 50px;
+  background: #2e2e2e;
+  border-radius: 14px;
+  border-color: #222222;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.client-id-state {
+  background-color: #272727;
+  border: none;
+  padding: 14px 8px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: rgb(168, 168, 168);
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  top: 5px;
+  left: 10px;
+  resize: none;
+  outline: none;
+  width: 375px;
+  height: 65%;
+  float: left;
+}
+
+.rpc-main-config-ImageKey {
+  position: relative;
+  top: 160px;
+  margin: auto;
+  width: 400px;
+  height: 50px;
+  background: #2e2e2e;
+  border-radius: 14px;
+  border-color: #222222;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.client-id-LImageKey {
+  background-color: #272727;
+  border: none;
+  padding: 14px 8px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: rgb(168, 168, 168);
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  top: 5px;
+  left: 10px;
+  resize: none;
+  outline: none;
+  width: 185px;
+  height: 65%;
+  float: left;
+}
+
+.client-id-SImageKey {
+  background-color: #272727;
+  border: none;
+  padding: 14px 8px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: rgb(168, 168, 168);
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  top: 5px;
+  left: 10px;
+  resize: none;
+  outline: none;
+  width: 185px;
+  height: 65%;
+  float: left;
+}
+
+.rpc-main-config-ImageText {
+  position: relative;
+  top: 190px;
+  margin: auto;
+  width: 400px;
+  height: 50px;
+  background: #2e2e2e;
+  border-radius: 14px;
+  border-color: #222222;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.client-id-LImageText {
+  background-color: #272727;
+  border: none;
+  padding: 14px 8px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: rgb(168, 168, 168);
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  top: 5px;
+  left: 10px;
+  resize: none;
+  outline: none;
+  width: 185px;
+  height: 65%;
+  float: left;
+}
+
+.client-id-SImageText {
+  background-color: #272727;
+  border: none;
+  padding: 14px 8px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: rgb(168, 168, 168);
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  top: 5px;
+  left: 10px;
+  resize: none;
+  outline: none;
+  width: 185px;
+  height: 65%;
+  float: left;
+}
+
+.profiles-button {
+  position: relative;
+  background-color: #4a70c3;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: #fff;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 4px;
+  resize: none;
+  outline: none;
+  width: 177px;
+  height: 35px;
+  left: 160px;
+  top: 240px;
+  font-weight: 600;
+  outline: none;
+  float: left;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+  transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
+}
+
+.profiles-button:hover {
+  background-color: #4060a7;
+  transform: scale(1.03);
+}
+
+.profiles-button:active {
+  transform: scale(0.97);
+}
+
+/* Profile Menu Styling */
+#profile-menu {
+  position: absolute;
+  top: 35px;
+  height: 665px;
+  width: 500px;
+  border-radius: 14px;
+  background: #111111c5;
+  z-index: 500;
+  visibility: hidden;
+}
+
+#profile-selector {
+  position: relative;
+  top: 50px;
+  margin: auto;
+  width: 400px;
+  height: 460px;
+  background: #2e2e2e;
+  border-radius: 14px;
+  border-color: #222222;
+  overflow-y: scroll;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+  visibility: hidden;
+}
+
+#profile-selector::-webkit-scrollbar {
+  width: 0px;
+  visibility: hidden;
+}
+
+#create-profile-button {
+  background-color: #60c34a;
+  border: none;
+  padding: 14px 8px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+  
+  color: white;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  top: 7px;
+  left: 10px;
+  resize: none;
+  outline: none;
+  width: 360px;
+  height: 20px;
+  float: left;
+
+  transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
+}
+
+#create-profile-button:hover {
+  color: white;
+  background-color: #60c34ae0;
+  transform: scale(1.03);
+}
+
+#create-profile-button:active {
+  transform: scale(0.97);
+}
+
+#profile-savename-input {
+  background-color: #272727;
+  border: none;
+  padding: 14px 8px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: rgb(168, 168, 168);
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  top: 30px;
+  left: 10px;
+  resize: none;
+  outline: none;
+  width: 375px;
+  height: 40px;
+}
+
+#profile-createsave-button {
+  background-color: #60c34a;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: #fff;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  top: 45px;
+  left: 30px;
+  resize: none;
+  outline: none;
+  width: 152px;
+  height: 30px;
+  font-weight: 600;
+  outline: none;
+  float: left;
+
+  transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
+}
+
+#profile-createsave-button:hover {
+  background-color: #50a33e;
+  transform: scale(1.03);
+}
+
+#profile-createsave-button:active {
+  transform: scale(0.97);
+}
+
+#profile-createcancel-button {
+  background-color: #e66060;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: #fff;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  top: 45px;
+  left: 65px;
+  resize: none;
+  outline: none;
+  width: 152px;
+  height: 30px;
+  font-weight: 600;
+  outline: none;
+  float: left;
+
+  transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
+}
+
+#profile-createcancel-button:hover {
+  background-color: #c05151;
+  transform: scale(1.03);
+}
+
+#profile-createcancel-button:active {
+  transform: scale(0.97);
+}
+
+#create-new-profile-confirm {
+  position: relative;
+  visibility: hidden;
+}
+
+#create-new-profile-confirm button {
+  float: left;
+}
+
+#profile-editor {
+  position: relative;
+  top: -210px;
+  margin: auto;
+  width: 400px;
+  height: 160px;
+  background: #2e2e2e;
+  border-radius: 14px;
+  border-color: #222222;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+  visibility: hidden;
+}
+
+#profile-settings {
+  position: absolute;
+  top: -5px;
+  visibility: hidden;
+}
+
+#profile-settings button {
+  float: left;
+}
+
+#profile-settings-profile-name {
+  position: relative;
+  top: 20px;
+  text-align: center;
+  font-size: 20px;
+  font-family: 'Inter';
+  font-weight: 500;
+}
+
+#profile-settings-overwrite-button {
+  background-color: #4a70c3;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: #fff;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  top: 40px;
+  left: 30px;
+  resize: none;
+  outline: none;
+  width: 152px;
+  height: 30px;
+  font-weight: 600;
+  outline: none;
+  float: left;
+
+  transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
+}
+
+#profile-settings-overwrite-button:hover {
+  background-color: #4060a7;
+  transform: scale(1.03);
+}
+
+#profile-settings-overwrite-button:active {
+  transform: scale(0.97);
+}
+
+#profile-settings-load-button {
+  background-color: #4a70c3;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: #fff;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  top: 40px;
+  left: 65px;
+  resize: none;
+  outline: none;
+  width: 152px;
+  height: 30px;
+  font-weight: 600;
+  outline: none;
+  float: left;
+
+  transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
+}
+
+#profile-settings-load-button:hover {
+  background-color: #4060a7;
+  transform: scale(1.03);
+}
+
+#profile-settings-load-button:active {
+  transform: scale(0.97);
+}
+
+#profile-settings-delete-button {
+  background-color: #e66060;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: #fff;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  top: 65px;
+  left: 30px;
+  resize: none;
+  outline: none;
+  width: 152px;
+  height: 30px;
+  font-weight: 600;
+  outline: none;
+  float: left;
+
+  transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
+}
+
+#profile-settings-delete-button:hover {
+  background-color: #c05151;
+  transform: scale(1.03);
+}
+
+#profile-settings-delete-button:active {
+  transform: scale(0.97);
+}
+
+#profile-settings-cancel-button {
+  background-color: #e66060;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: #fff;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  top: 65px;
+  left: 65px;
+  resize: none;
+  outline: none;
+  width: 152px;
+  height: 30px;
+  font-weight: 600;
+  outline: none;
+  float: left;
+
+  transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
+}
+
+#profile-settings-cancel-button:hover {
+  background-color: #c05151;
+  transform: scale(1.03);
+}
+
+#profile-settings-cancel-button:active {
+  transform: scale(0.97);
+}
+
+#load-profile-confirm {
+  position: absolute;
+  top: -5px;
+  visibility: hidden;
+}
+
+#load-profile-confirm button {
+  float: left;
+}
+
+#profile-load-button {
+  background-color: #60c34a;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: #fff;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  top: 45px;
+  left: 30px;
+  resize: none;
+  outline: none;
+  width: 152px;
+  height: 30px;
+  font-weight: 600;
+  outline: none;
+  float: left;
+
+  transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
+}
+
+#profile-load-button:hover {
+  background-color: #50a33e;
+  transform: scale(1.03);
+}
+
+#profile-load-button:active {
+  transform: scale(0.97);
+}
+
+#profile-loadcancel-button {
+  background-color: #e66060;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: #fff;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  top: 45px;
+  left: 65px;
+  resize: none;
+  outline: none;
+  width: 152px;
+  height: 30px;
+  font-weight: 600;
+  outline: none;
+  float: left;
+
+  transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
+}
+
+#profile-loadcancel-button:hover {
+  background-color: #c05151;
+  transform: scale(1.03);
+}
+
+#profile-loadcancel-button:active {
+  transform: scale(0.97);
+}
+
+#profile-loadname-input {
+  background-color: #272727;
+  border: none;
+  padding: 14px 8px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: rgb(168, 168, 168);
+  margin: 4px 2px;
+  cursor: default;
+  border-radius: 4px;
+  position: relative;
+  top: 30px;
+  left: 10px;
+  resize: none;
+  outline: none;
+  width: 375px;
+  height: 40px;
+}
+
+#delete-profile-confirm {
+  position: absolute;
+  top: -5px;
+  visibility: hidden;
+}
+
+#delete-profile-confirm button {
+  float: left;
+}
+
+#profile-deletename-input {
+  background-color: #272727;
+  border: none;
+  padding: 14px 8px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: rgb(168, 168, 168);
+  margin: 4px 2px;
+  cursor: default;
+  border-radius: 4px;
+  position: relative;
+  top: 30px;
+  left: 10px;
+  resize: none;
+  outline: none;
+  width: 375px;
+  height: 40px;
+}
+
+#profile-delete-button {
+  background-color: #60c34a;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: #fff;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  top: 45px;
+  left: 30px;
+  resize: none;
+  outline: none;
+  width: 152px;
+  height: 30px;
+  font-weight: 600;
+  outline: none;
+  float: left;
+
+  transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
+}
+
+#profile-delete-button:hover {
+  background-color: #50a33e;
+  transform: scale(1.03);
+}
+
+#profile-delete-button:active {
+  transform: scale(0.97);
+}
+
+#profile-deletecancel-button {
+  background-color: #e66060;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: #fff;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  top: 45px;
+  left: 65px;
+  resize: none;
+  outline: none;
+  width: 152px;
+  height: 30px;
+  font-weight: 600;
+  outline: none;
+  float: left;
+
+  transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
+}
+
+#profile-deletecancel-button:hover {
+  background-color: #c05151;
+  transform: scale(1.03);
+}
+
+#profile-deletecancel-button:active {
+  transform: scale(0.97);
+}
+
+#overwrite-profile-confirm {
+  position: absolute;
+  top: -5px;
+  visibility: hidden;
+}
+
+#overwrite-profile-confirm button {
+  float: left;
+}
+
+#profile-overwritename-input {
+  background-color: #272727;
+  border: none;
+  padding: 14px 8px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: rgb(168, 168, 168);
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  top: 30px;
+  left: 10px;
+  resize: none;
+  outline: none;
+  width: 375px;
+  height: 40px;
+}
+
+#profile-overwrite-button {
+  background-color: #60c34a;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: #fff;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  top: 45px;
+  left: 30px;
+  resize: none;
+  outline: none;
+  width: 152px;
+  height: 30px;
+  font-weight: 600;
+  outline: none;
+  float: left;
+
+  transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
+}
+
+#profile-overwrite-button:hover {
+  background-color: #50a33e;
+  transform: scale(1.03);
+}
+
+#profile-overwrite-button:active {
+  transform: scale(0.97);
+}
+
+#profile-overwritecancel-button {
+  background-color: #e66060;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: #fff;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  top: 45px;
+  left: 65px;
+  resize: none;
+  outline: none;
+  width: 152px;
+  height: 30px;
+  font-weight: 600;
+  outline: none;
+  float: left;
+
+  transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
+}
+
+#profile-overwritecancel-button:hover {
+  background-color: #c05151;
+  transform: scale(1.03);
+}
+
+#profile-overwritecancel-button:active {
+  transform: scale(0.97);
+}
+
+#profile-back-button {
+  position: relative;
+  background-color: #e66060;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+  color: #fff;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 4px;
+  resize: none;
+  outline: none;
+  width: 152px;
+  height: 35px;
+  top: -59px;
+  left: 173px;
+  font-weight: 600;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+  transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
+}
+
+#profile-back-button:hover {
+  background-color: #c05151;
+  transform: scale(1.03);
+}
+
+#profile-back-button:active {
+  transform: scale(0.97);
+}
+
+.profile {
+  background-color: #484848;
+  border: none;
+  padding: 14px 8px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+  
+  color: rgb(197, 197, 197);
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+  top: 7px;
+  left: 10px;
+  resize: none;
+  outline: none;
+  width: 360px;
+  height: 17px;
+  float: left;
+
+  transition: color .1s ease-in, background-color .1s ease-in, transform .1s ease-in-out;
+}
+
+.profile:hover {
+  color: black;
+  background: #636363;
+  transform: scale(1.03);
+}
+
+.profile:active {
+  transform: scale(0.97);
+}

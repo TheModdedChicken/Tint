@@ -2,12 +2,14 @@ const RPC = require('discord-rpc');
 const { ipcRenderer } = require('electron');
 var fs = require('fs');
 
+// Custom Dependencies
+const { appendArgsToJSON } = require('./js/argsToJSON');
+
 var isRPCon = false;
 var userData;
 var userFL;
 
 ipcRenderer.send('userDataFolder');
-
 ipcRenderer.on('userDataFolder', (event, arg) => {
     var UDExist = fs.existsSync(arg + '\\userData.json')
 
@@ -29,8 +31,6 @@ function createUserData (UDExist, arg) {
     }
 }
 
-var isWin = process.platform === "win32";
-
 /* Window Menu Functions */
 function closeApp() {
     ipcRenderer.send('close-me');
@@ -42,24 +42,6 @@ function minimizeApp() {
 
 function minimizeTrayApp() {
     ipcRenderer.send('minimizeTray-me');
-}
-
-if (isWin == true) {
-    var macButtonClose = document.getElementById('hom-close');
-    var macButtonMT = document.getElementById('hom-minTray');
-    var macButtonM = document.getElementById('hom-min');
-
-    macButtonClose.style.visibility = 'hidden';
-    macButtonM.style.visibility = 'hidden';
-    macButtonMT.style.visibility = 'hidden';
-} else {
-    var winButtonMT = document.getElementById('minTray-button');
-    var winButtonM = document.getElementById('min-button');
-    var winButtonClose = document.getElementById('close-button');
-
-    winButtonMT.style.visibility = 'hidden';
-    winButtonM.style.visibility = 'hidden';
-    winButtonClose.style.visibility = 'hidden';
 }
 
 /* RPC Load Functions */
@@ -101,51 +83,18 @@ function createRPC(clientIdLogin) {
         return;
     }
 
-    if (detailText) {
-        if (detailText.length >= 2) {
-            var detailJson = {
-                details: `${detailText}`
-            }
-        }
-    }
+    if (detailText.length <= 2) { detailText = null }
+    if (stateText.length <= 2) { stateText = null }
 
-    if (stateText) {
-        if (stateText.length >= 2) {
-            var stateJson = {
-                state: `${stateText}`
-            }
-        }
-    }
-
-    if (LImageKey) {
-        var LImageKeyJson = {
-            largeImageKey: `${LImageKey}`
-        }
-    }
-
-    if (SImageKey) {
-        var SImageKeyJson = {
-            smallImageKey: `${SImageKey}`
-        }
-    }
-
-    if (LImageText) {
-        var LImageTextJson = {
-            largeImageText: `${LImageText}`
-        }
-    }
-
-    if (SImageText) {
-        var SImageTextJson = {
-            smallImageText: `${SImageText}`
-        }
-    }
-
-    var extraJson = {
-        startTimestamp: new Date()
-    }
-
-    var completeData = Object.assign({}, detailJson, stateJson, SImageKeyJson, LImageKeyJson, LImageTextJson, SImageTextJson, extraJson);
+    const completeData = appendArgsToJSON([
+        {details: detailText}, 
+        {state: stateText}, 
+        {smallImageKey: SImageKey}, 
+        {largeImageKey: LImageKey}, 
+        {largeImageText: LImageText}, 
+        {smallImageText: SImageText}, 
+        {startTimestamp: new Date()}
+    ]);
 
     rpc = new RPC.Client({
         transport: "ipc"
@@ -179,51 +128,18 @@ function reloadRPC() {
         return;
     }
 
-    if (detailText) {
-        if (detailText.length >= 2) {
-            var detailJson = {
-                details: `${detailText}`
-            }
-        }
-    }
+    if (detailText.length <= 2) { detailText = null }
+    if (stateText.length <= 2) { stateText = null }
 
-    if (stateText) {
-        if (stateText.length >= 2) {
-            var stateJson = {
-                state: `${stateText}`
-            }
-        }
-    }
-
-    if (LImageKey) {
-        var LImageKeyJson = {
-            largeImageKey: `${LImageKey}`
-        }
-    }
-
-    if (SImageKey) {
-        var SImageKeyJson = {
-            smallImageKey: `${SImageKey}`
-        }
-    }
-
-    if (LImageText) {
-        var LImageTextJson = {
-            largeImageText: `${LImageText}`
-        }
-    }
-
-    if (SImageText) {
-        var SImageTextJson = {
-            smallImageText: `${SImageText}`
-        }
-    }
-
-    var extraJson = {
-        startTimestamp: new Date()
-    }
-
-    var completeData = Object.assign({}, detailJson, stateJson, SImageKeyJson, LImageKeyJson, LImageTextJson, SImageTextJson, extraJson);
+    const completeData = appendArgsToJSON([
+        {details: detailText}, 
+        {state: stateText}, 
+        {smallImageKey: SImageKey}, 
+        {largeImageKey: LImageKey}, 
+        {largeImageText: LImageText}, 
+        {smallImageText: SImageText}, 
+        {startTimestamp: new Date()}
+    ]);
 
     rpc.setActivity(completeData);
 }
@@ -324,9 +240,9 @@ function reloadProfiles () {
     let profileList = document.getElementById('profileList');
 
     profileCache.forEach(function (arrayItem) {
-        var fieldProfiles = document.getElementById(`fieldProfile ${arrayItem}`);
+        var profiles = document.getElementById(`profile ${arrayItem}`);
 
-        fieldProfiles.remove();
+        profiles.remove();
     });
 
     profileCache = [];
@@ -337,21 +253,21 @@ function reloadProfiles () {
     console.log(profileCache);
 
     profileCache.forEach(function (arrayItem) {
-        let fieldProfile = document.createElement('li');
+        let profile = document.createElement('li');
 
-        fieldProfile.className = `fieldProfile ${arrayItem}`;
-        fieldProfile.id = `fieldProfile ${arrayItem}`;
+        profile.className = `profile ${arrayItem}`;
+        profile.id = `profile ${arrayItem}`;
 
-        fieldProfile.addEventListener('click', (onmouseup) => {
+        profile.addEventListener('click', (onmouseup) => {
             var loadProfilebar = document.getElementById('profile-loadname-input');
 
             loadProfilebar.value = `${arrayItem}`;
             openMenu('ProfileMenu','ProfileSettingsMenu', `${arrayItem}`);
         });
 
-        fieldProfile.textContent = `${arrayItem}`
+        profile.textContent = `${arrayItem}`
 
-        profileList.appendChild(fieldProfile);
+        profileList.appendChild(profile);
     });
 }
 
@@ -425,128 +341,95 @@ function overwriteProfile () {
 /* Menu Functions */
 
 function openMenu (currentMenu, goingTo, profile) {
+    var profileMenu = document.getElementById('profile-menu');
+    let profileList = document.getElementById('profileList');
+    var profileSelector = document.getElementById('profile-selector');
+    var profileBackButton = document.getElementById('profile-back-button');
+    var createNewProfileConfirm = document.getElementById('create-new-profile-confirm');
+    var profileEditor = document.getElementById('profile-editor');
+    var profileSettingsDiv = document.getElementById('profile-settings');
+    var profileSettingsProfileName = document.getElementById('profile-settings-profile-name');
+    var profileSettingsLoadMenuInput = document.getElementById('profile-loadname-input');
+    var profileSettingsLoadMenu = document.getElementById('load-profile-confirm');
+    var profileSettingsDeleteMenuInput = document.getElementById('profile-deletename-input');
+    var profileSettingsDeleteMenu = document.getElementById('delete-profile-confirm');
+    var profileSettingsOverwriteMenuInput = document.getElementById('profile-overwritename-input');
+    var profileSettingsOverwriteMenu = document.getElementById('overwrite-profile-confirm');
 
     // Entering Profile Menu
-    if (currentMenu == 'MainMenu' && goingTo == 'ProfileMenu') {
-        var fieldProfilesMenu = document.getElementById('field-profiles');
-        let profileList = document.getElementById('profileList');
-        var fieldSelectorDiv = document.getElementById('field-selector-div');
-        var fieldProfileBackButton = document.getElementById('field-back-button');
-    
-        fieldProfilesMenu.style.visibility = 'visible';
-        fieldSelectorDiv.style.visibility = 'visible';
-        fieldProfileBackButton.style.visibility = 'visible';
+    if (currentMenu == 'MainMenu' && goingTo == 'ProfileMenu') {    
+        profileMenu.style.visibility = 'visible';
+        profileSelector.style.visibility = 'visible';
+        profileBackButton.style.visibility = 'visible';
     
         profileCache = [];
-    
-        for (var i in userData)
-            profileCache.push(i);
-    
-        console.log(profileCache);
-    
-        profileCache.forEach(function (arrayItem) {
-            let fieldProfile = document.createElement('li');
-    
-            fieldProfile.className = `fieldProfile ${arrayItem}`;
-            fieldProfile.id = `fieldProfile ${arrayItem}`;
-    
-            fieldProfile.addEventListener('click', (onmousedown) => {
-                var loadProfilebar = document.getElementById('profile-loadname-input');
-
-                loadProfilebar.value = `${arrayItem}`;
-                openMenu('ProfileMenu','ProfileSettingsMenu', `${arrayItem}`);
-            });
-    
-            fieldProfile.textContent = `${arrayItem}`
-    
-            profileList.appendChild(fieldProfile);
-        });
-
+        reloadProfiles();
         return;
     }
 
     // Entering Create Profile Menu
     if (currentMenu == 'ProfileMenu' && goingTo == 'CreateProfileMenu') {
-        var fieldSelectorDiv = document.getElementById('field-selector-div');
-        var fieldProfileBackButton = document.getElementById('field-back-button');
-        var createNewProfileConfirm = document.getElementById('create-new-profile-confirm');
-        var profileEditorDiv = document.getElementById('field-profile-editor-div');
-
-        fieldSelectorDiv.style.visibility = 'hidden';
-        fieldProfileBackButton.style.visibility = 'hidden';
-        profileEditorDiv.style.visibility = 'visible';
+        profileSelector.style.visibility = 'hidden';
+        profileBackButton.style.visibility = 'hidden';
+        profileEditor.style.visibility = 'visible';
         createNewProfileConfirm.style.visibility = 'visible';
     }
 
     // Entering Profile Settings Menu
     if (currentMenu == 'ProfileMenu' && goingTo == 'ProfileSettingsMenu') {
-        var fieldSelectorDiv = document.getElementById('field-selector-div');
-        var profileSettingsDiv = document.getElementById('profile-settings');
-        var fieldProfileBackButton = document.getElementById('field-back-button');
-        var fieldProfileEditorDiv = document.getElementById('field-profile-editor-div');
-        var profileSettingsText = document.getElementById('profile-settings-text');
-
-        profileSettingsText.textContent = `${profile}`;
-        fieldProfileEditorDiv.style.visibility = 'visible';
+        profileSettingsProfileName.textContent = `${profile}`;
+        profileEditor.style.visibility = 'visible';
         profileSettingsDiv.style.visibility = 'visible';
-        fieldSelectorDiv.style.visibility = 'hidden';
-        fieldProfileBackButton.style.visibility = 'hidden';
+        profileSelector.style.visibility = 'hidden';
+        profileBackButton.style.visibility = 'hidden';
     }
 
     // Entering Load Profile Menu
     if (currentMenu == 'ProfileSettingsMenu' && goingTo == 'LoadProfileMenu') {
-        var profileSettingsDiv = document.getElementById('profile-settings');
-        var profileSettingsText = document.getElementById('profile-settings-text');
-        var profileSettingsLoadMenuInput = document.getElementById('profile-loadname-input');
-        var profileSettingsLoadMenu = document.getElementById('load-profile-confirm');
-
-        profileSettingsLoadMenuInput.value = profileSettingsText.textContent;
+        profileSettingsLoadMenuInput.value = profileSettingsProfileName.textContent;
         profileSettingsDiv.style.visibility = 'hidden';
         profileSettingsLoadMenu.style.visibility = 'visible';
     }
 
     // Entering Delete Profile Menu
     if (currentMenu == 'ProfileSettingsMenu' && goingTo == 'DeleteProfileMenu') {
-        var profileSettingsText = document.getElementById('profile-settings-text');
-        var profileSettingsDeleteMenuInput = document.getElementById('profile-deletename-input');
-        var profileSettingsDiv = document.getElementById('profile-settings');
-        var profileSettingsDeleteMenu = document.getElementById('delete-profile-confirm');
-
-        profileSettingsDeleteMenuInput.value = profileSettingsText.textContent;
+        profileSettingsDeleteMenuInput.value = profileSettingsProfileName.textContent;
         profileSettingsDiv.style.visibility = 'hidden';
         profileSettingsDeleteMenu.style.visibility = 'visible';
     }
 
     // Entering Overwrite Profile Menu
     if (currentMenu == 'ProfileSettingsMenu' && goingTo == 'OverwriteProfileMenu') {
-        var profileSettingsOverwriteMenuInput = document.getElementById('profile-overwritename-input');
-        var profileSettingsOverwriteMenu = document.getElementById('overwrite-profile-confirm');
-        var profileSettingsText = document.getElementById('profile-settings-text');
-        var profileSettingsDiv = document.getElementById('profile-settings');
-
-        profileSettingsOverwriteMenuInput.value = profileSettingsText.textContent;
+        profileSettingsOverwriteMenuInput.value = profileSettingsProfileName.textContent;
         profileSettingsDiv.style.visibility = 'hidden';
         profileSettingsOverwriteMenu.style.visibility = 'visible';
     }
 }
 
 function closeMenu (currentMenu, goingTo) {
+    var profilesMenu = document.getElementById('profile-menu');
+    var profileSelector = document.getElementById('profile-selector');
+    var profileBackButton = document.getElementById('profile-back-button');
+    var createProfileButton = document.getElementById('create-profile-button');
+    var savename = document.getElementById('profile-savename-input');
+    var profileEditor = document.getElementById('profile-editor');
+    var createNewProfileConfirm = document.getElementById('create-new-profile-confirm');
+    var loadProfileConfirmDiv = document.getElementById('load-profile-confirm');
+    var profileSettingsDiv = document.getElementById('profile-settings');
+    var profileSettingsDeleteMenu = document.getElementById('delete-profile-confirm');
+    var profileSettingsOverwriteMenu = document.getElementById('overwrite-profile-confirm');
+    var profileSelector = document.getElementById('profile-selector');
 
     // Leaving Profile Menu
     if (currentMenu == 'ProfileMenu' && goingTo == 'MainMenu') {
-        var fieldProfilesMenu = document.getElementById('field-profiles');
-        var fieldSelectorDiv = document.getElementById('field-selector-div');
-        var fieldProfileBackButton = document.getElementById('field-back-button');
-        var createProfileButton = document.getElementById('create-profile-button');
-    
-        fieldProfilesMenu.style.visibility = 'hidden';
-        fieldSelectorDiv.style.visibility = 'hidden';
-        fieldProfileBackButton.style.visibility = 'hidden';
+        profilesMenu.style.visibility = 'hidden';
+        profileSelector.style.visibility = 'hidden';
+        profileBackButton.style.visibility = 'hidden';
     
         profileCache.forEach(function (arrayItem) {
-            var fieldProfiles = document.getElementById(`fieldProfile ${arrayItem}`);
+            var profiles = document.getElementById(`profile ${arrayItem}`);
     
-            fieldProfiles.remove();
+            profiles.remove();
         });
 
         return;
@@ -554,72 +437,45 @@ function closeMenu (currentMenu, goingTo) {
 
     // Leaving Create Profile Menu
     if (currentMenu == 'CreateProfileMenu' && goingTo == 'ProfileMenu') {
-        var savename = document.getElementById('profile-savename-input');
-        var profileEditorDiv = document.getElementById('field-profile-editor-div');
-        var fieldSelectorDiv = document.getElementById('field-selector-div');
-        var fieldProfileBackButton = document.getElementById('field-back-button');
-        var createNewProfileConfirm = document.getElementById('create-new-profile-confirm');
-        
-
         savename.value = '';
 
         createNewProfileConfirm.style.visibility = 'hidden';
-        profileEditorDiv.style.visibility = 'hidden';
-        fieldSelectorDiv.style.visibility = 'visible';
-        fieldProfileBackButton.style.visibility = 'visible';
+        profileEditor.style.visibility = 'hidden';
+        profileSelector.style.visibility = 'visible';
+        profileBackButton.style.visibility = 'visible';
 
         return;
     }
 
     // Leaving Load Profile Menu
     if (currentMenu == 'LoadProfileMenu' && goingTo == 'ProfileMenu') {
-        var loadProfileConfirmDiv = document.getElementById('load-profile-confirm');
-        var fieldSelectorDiv = document.getElementById('field-selector-div');
-        var fieldProfileBackButton = document.getElementById('field-back-button');
-        var fieldProfileEditorDiv = document.getElementById('field-profile-editor-div');
-
-        fieldProfileEditorDiv.style.visibility = 'hidden';
+        profileEditor.style.visibility = 'hidden';
         loadProfileConfirmDiv.style.visibility = 'hidden';
-        fieldSelectorDiv.style.visibility = 'visible';
-        fieldProfileBackButton.style.visibility = 'visible';
+        profileSelector.style.visibility = 'visible';
+        profileBackButton.style.visibility = 'visible';
     }
 
     // Leaving Profile Settings Menu
     if (currentMenu == 'ProfileSettingsMenu' && goingTo == 'ProfileMenu') {
-        var profileSettingsDiv = document.getElementById('profile-settings');
-        var fieldProfileEditorDiv = document.getElementById('field-profile-editor-div');
-        var fieldSelectorDiv = document.getElementById('field-selector-div');
-        var fieldProfileBackButton = document.getElementById('field-back-button');
-
-        fieldProfileEditorDiv.style.visibility = 'hidden';
+        profileEditor.style.visibility = 'hidden';
         profileSettingsDiv.style.visibility = 'hidden';
-        fieldSelectorDiv.style.visibility = 'visible';
-        fieldProfileBackButton.style.visibility = 'visible';
+        profileSelector.style.visibility = 'visible';
+        profileBackButton.style.visibility = 'visible';
     }
 
     //Leaving Delete Profile Menu
     if (currentMenu == 'DeleteProfileMenu' && goingTo == 'ProfileMenu') {
-        var profileSettingsDeleteMenu = document.getElementById('delete-profile-confirm');
-        var fieldProfileEditorDiv = document.getElementById('field-profile-editor-div');
-        var fieldSelectorDiv = document.getElementById('field-selector-div');
-        var fieldProfileBackButton = document.getElementById('field-back-button');
-
         profileSettingsDeleteMenu.style.visibility = 'hidden';
-        fieldProfileEditorDiv.style.visibility = 'hidden';
-        fieldSelectorDiv.style.visibility = 'visible';
-        fieldProfileBackButton.style.visibility = 'visible';
+        profileEditor.style.visibility = 'hidden';
+        profileSelector.style.visibility = 'visible';
+        profileBackButton.style.visibility = 'visible';
     }
 
     //Leaving Overwrite Profile Menu
     if (currentMenu == 'OverwriteProfileMenu' && goingTo == 'ProfileMenu') {
-        var profileSettingsOverwriteMenu = document.getElementById('overwrite-profile-confirm');
-        var fieldProfileEditorDiv = document.getElementById('field-profile-editor-div');
-        var fieldSelectorDiv = document.getElementById('field-selector-div');
-        var fieldProfileBackButton = document.getElementById('field-back-button');
-
         profileSettingsOverwriteMenu.style.visibility = 'hidden';
-        fieldProfileEditorDiv.style.visibility = 'hidden';
-        fieldSelectorDiv.style.visibility = 'visible';
-        fieldProfileBackButton.style.visibility = 'visible';
+        profileEditor.style.visibility = 'hidden';
+        profileSelector.style.visibility = 'visible';
+        profileBackButton.style.visibility = 'visible';
     }
 }

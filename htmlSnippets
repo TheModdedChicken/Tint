@@ -1,0 +1,3 @@
+<div class="header-options-mac" id="hom-close" style="background: #e66060;" onclick="closeApp();"></div>
+<div class="header-options-mac" id="hom-minTray" style="background: #efc03d;" onclick="minimizeTrayApp();"></div>
+<div class="header-options-mac" id="hom-min" style="background: #60c34a;" onclick="minimizeApp();"></div>

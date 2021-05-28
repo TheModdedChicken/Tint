@@ -3,74 +3,70 @@
     <meta charset="UTF-8">
     <title>Tint</title>
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/refresh.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body class="main-body">
-    <div style="position: absolute; width: 100%; height: 100%; border-radius: 14px; background: #111111; color: #cccccc; z-index: -100;"></div>
-    <script src="index.js" defer></script>
-    <header style="overflow: hidden;">
-        <div class="header-options-mac" id="hom-close" style="background: #e66060;" onclick="closeApp();"></div>
-        <div class="header-options-mac" id="hom-minTray" style="background: #efc03d;" onclick="minimizeTrayApp();"></div>
-        <div class="header-options-mac" id="hom-min" style="background: #60c34a;" onclick="minimizeApp();"></div>
-        
-        <div class="header-options-win-red" id="close-button" style="position: relative;" onclick="closeApp();">
-            <img class="icon" srcset="icons/close-w-10.png 1x, icons/close-w-12.png 1.25x, icons/close-w-15.png 1.5x, icons/close-w-15.png 1.75x, icons/close-w-20.png 2x, icons/close-w-20.png 2.25x, icons/close-w-24.png 2.5x, icons/close-w-30.png 3x, icons/close-w-30.png 3.5x" draggable="false" />
+    <div class="main-body-background"></div>
+    <header class="main-header">
+        <div id="close-button" onclick="closeApp();">
+            <img class="icon" srcset="assets/icons/close-w-10.png 1x, assets/icons/close-w-12.png 1.25x, assets/icons/close-w-15.png 1.5x, assets/icons/close-w-15.png 1.75x, assets/icons/close-w-20.png 2x, assets/icons/close-w-20.png 2.25x, assets/icons/close-w-24.png 2.5x, assets/icons/close-w-30.png 3x, assets/icons/close-w-30.png 3.5x" draggable="false" />
         </div>
-        <div class="header-options-win" id="minTray-button" style="position: relative;" onclick="minimizeTrayApp();">
-            <img class="icon" srcset="icons/restore-w-10.png 1x" draggable="false" />
+        <div class="header-options-win" id="minTray-button" onclick="minimizeTrayApp();">
+            <img class="icon" srcset="assets/icons/restore-w-10.png 1x" draggable="false" />
         </div>
-        <div class="header-options-win" id="min-button" style="position: relative;" onclick="minimizeApp();">
-            <img class="icon" srcset="icons/min-w-10.png 1x, icons/min-w-12.png 1.25x, icons/min-w-15.png 1.5x, icons/min-w-15.png 1.75x, icons/min-w-20.png 2x, icons/min-w-20.png 2.25x, icons/min-w-24.png 2.5x, icons/min-w-30.png 3x, icons/min-w-30.png 3.5x" draggable="false" />
+        <div class="header-options-win" id="min-button" onclick="minimizeApp();">
+            <img class="icon" srcset="assets/icons/min-w-10.png 1x, assets/icons/min-w-12.png 1.25x, assets/icons/min-w-15.png 1.5x, assets/icons/min-w-15.png 1.75x, assets/icons/min-w-20.png 2x, assets/icons/min-w-20.png 2.25x, assets/icons/min-w-24.png 2.5x, assets/icons/min-w-30.png 3x, assets/icons/min-w-30.png 3.5x" draggable="false" />
         </div>
     </header>
-    <div class="field-profiles" id="field-profiles" style="position:absolute; top: 35px; height: 665px; width: 500px; border-radius: 14px; background: #111111c5; z-index: 500; visibility: hidden;">
-        <div class="field-selector-div" id="field-selector-div" style="visibility: hidden;">
+    <div id="profile-menu">
+        <div id="profile-selector">
             <nav>
                 <ul id="profileList">
-                    <li class="create-profile-button" id="create-profile-button" onclick="openMenu('ProfileMenu', 'CreateProfileMenu');">Create New Profile</li>
+                    <li id="create-profile-button" onclick="openMenu('ProfileMenu', 'CreateProfileMenu');">Create New Profile</li>
                 </ul>
             </nav>
         </div>
 
-        <div class="field-profile-editor-div" id="field-profile-editor-div" style="visibility: hidden;">
-            <div class="profile-settings" id="profile-settings" style="position: absolute; top: -5px; visibility: hidden;">
-                <h2 id="profile-settings-text" style="position: relative; top: 20px; text-align: center; font-size: 20px; font-family: 'Inter'; font-weight: 500;"></h2>
-                <button class="profile-settings-overwrite-button" id="profile-settings-delete-button" onclick="openMenu('ProfileSettingsMenu', 'OverwriteProfileMenu');" style="float: left;">Overwrite Profile</button>
-                <button class="profile-settings-load-button" id="profile-settings-cancel-button" onclick="openMenu('ProfileSettingsMenu', 'LoadProfileMenu');" style="float: left;">Load Profile</button>
-                <button class="profile-settings-delete-button" id="profile-settings-delete-button" onclick="openMenu('ProfileSettingsMenu', 'DeleteProfileMenu');" style="float: left;">Delete Profile</button>
-                <button class="profile-settings-cancel-button" id="profile-settings-cancel-button" onclick="closeMenu('ProfileSettingsMenu', 'ProfileMenu');" style="float: left;">Cancel</button>
+        <div id="profile-editor">
+            <div id="profile-settings">
+                <h2 id="profile-settings-profile-name"></h2>
+                <button id="profile-settings-overwrite-button" onclick="openMenu('ProfileSettingsMenu', 'OverwriteProfileMenu');">Overwrite Profile</button>
+                <button id="profile-settings-load-button" onclick="openMenu('ProfileSettingsMenu', 'LoadProfileMenu');">Load Profile</button>
+                <button id="profile-settings-delete-button" onclick="openMenu('ProfileSettingsMenu', 'DeleteProfileMenu');">Delete Profile</button>
+                <button id="profile-settings-cancel-button" onclick="closeMenu('ProfileSettingsMenu', 'ProfileMenu');">Cancel</button>
             </div>
 
-            <div class="create-new-profile-confirm" id="create-new-profile-confirm" style="position: relative; visibility: hidden;">
+            <div id="create-new-profile-confirm">
                 <h2 style="position: relative; top: 20px; text-align: center; font-size: 20px; font-family: 'Inter'; font-weight: 500;">New Profile</h2>
-                <input class="profile-savename-input" id="profile-savename-input" placeholder="Save Name" type="text" spellcheck="false" maxlength="20"></input>
-                <button class="profile-createsave-button" id="profile-createsave-button" onclick="createNewProfile()" style="float: left;">Create Profile</button>
-                <button class="profile-createcancel-button" id="profile-createcancel-button" onclick="closeMenu('CreateProfileMenu', 'ProfileMenu');" style="float: left;">Cancel</button>
+                <input id="profile-savename-input" placeholder="Save Name" type="text" spellcheck="false" maxlength="20"></input>
+                <button id="profile-createsave-button" onclick="createNewProfile()">Create Profile</button>
+                <button id="profile-createcancel-button" onclick="closeMenu('CreateProfileMenu', 'ProfileMenu');">Cancel</button>
             </div>
 
-            <div class="load-profile-confirm" id="load-profile-confirm" style="position: absolute; top: -5px; visibility: hidden;">
+            <div id="load-profile-confirm">
                 <h2 style="position: relative; top: 20px; text-align: center; font-size: 20px; font-family: 'Inter'; font-weight: 500;">Load Profile</h2>
-                <input class="profile-loadname-input" id="profile-loadname-input" placeholder="Profile Name" type="text" spellcheck="false" maxlength="20" onmousedown="return false;"></input>
-                <button class="profile-load-button" id="profile-load-button" onclick="loadProfile()" style="float: left;">Load Profile</button>
-                <button class="profile-loadcancel-button" id="profile-loadcancel-button" onclick="closeMenu('LoadProfileMenu', 'ProfileMenu');" style="float: left;">Cancel</button>
+                <input id="profile-loadname-input" placeholder="Profile Name" type="text" spellcheck="false" maxlength="20" onmousedown="return false;"></input>
+                <button id="profile-load-button" onclick="loadProfile()">Load Profile</button>
+                <button id="profile-loadcancel-button" onclick="closeMenu('LoadProfileMenu', 'ProfileMenu');">Cancel</button>
             </div>
 
-            <div class="delete-profile-confirm" id="delete-profile-confirm" style="position: absolute; top: -5px; visibility: hidden;">
+            <div id="delete-profile-confirm">
                 <h2 style="position: relative; top: 20px; text-align: center; font-size: 20px; font-family: 'Inter'; font-weight: 500;">Delete Profile</h2>
-                <input class="profile-deletename-input" id="profile-deletename-input" placeholder="Profile Name" type="text" spellcheck="false" maxlength="20" onmousedown="return false;"></input>
-                <button class="profile-delete-button" id="profile-delete-button" onclick="deleteProfile();" style="float: left;">Delete Profile</button>
-                <button class="profile-deletecancel-button" id="profile-deletecancel-button" onclick="closeMenu('DeleteProfileMenu', 'ProfileMenu');" style="float: left;">Cancel</button>
+                <input id="profile-deletename-input" placeholder="Profile Name" type="text" spellcheck="false" maxlength="20" onmousedown="return false;"></input>
+                <button id="profile-delete-button" onclick="deleteProfile();">Delete Profile</button>
+                <button id="profile-deletecancel-button" onclick="closeMenu('DeleteProfileMenu', 'ProfileMenu');">Cancel</button>
             </div>
 
-            <div class="overwrite-profile-confirm" id="overwrite-profile-confirm" style="position: absolute; top: -5px; visibility: hidden;">
+            <div id="overwrite-profile-confirm">
                 <h2 style="position: relative; top: 20px; text-align: center; font-size: 20px; font-family: 'Inter'; font-weight: 500;">Overwrite Profile</h2>
-                <input class="profile-overwritename-input" id="profile-overwritename-input" placeholder="Profile Name" type="text" spellcheck="false" maxlength="20" onmousedown="return false;" style="cursor: default;"></input>
-                <button class="profile-overwrite-button" id="profile-overwrite-button" onclick="overwriteProfile();" style="float: left;">Overwrite Profile</button>
-                <button class="profile-overwritecancel-button" id="profile-overwritecancel-button" onclick="closeMenu('OverwriteProfileMenu', 'ProfileMenu');" style="float: left;">Cancel</button>
+                <input id="profile-overwritename-input" placeholder="Profile Name" type="text" spellcheck="false" maxlength="20" onmousedown="return false;" style="cursor: default;"></input>
+                <button id="profile-overwrite-button" onclick="overwriteProfile();">Overwrite Profile</button>
+                <button id="profile-overwritecancel-button" onclick="closeMenu('OverwriteProfileMenu', 'ProfileMenu');">Cancel</button>
             </div>
         </div>
-        <button class="field-back-button" id="field-back-button" onclick="closeMenu('ProfileMenu', 'MainMenu');">Back</button>
+        <button id="profile-back-button" onclick="closeMenu('ProfileMenu', 'MainMenu');">Back</button>
     </div>
     <div class="main" id="main">
         <div class="rpc-run-config">
@@ -81,29 +77,31 @@
         </div>
         <h2 style="position: relative; top: 80px; margin: auto; text-align: center; font-family: 'Inter'; font-weight: 500; font-size: 18px; cursor: default;">Detail Text</h2>
         <div class="rpc-main-config-detailBox">
-            <input class="client-id-detail" id="client-id-detail" placeholder="You know how to type right?" type="text" spellcheck="false"></input>
+            <input class="client-id-detail" id="client-id-detail" placeholder="Gimme the deets..." type="text" spellcheck="false"></input>
         </div>
 
         <h2 class="state-field-header-text" style="position: relative; width: fit-content; height: fit-content; left: 205px; top: 120px; text-align: center; font-family: 'Inter'; font-weight: 500; font-size: 18px; cursor: default;">State Text</h2>
         <div class="rpc-main-config-stateBox">
-            <input class="client-id-state" id="client-id-state" placeholder="Using 2/5 Brain Cells" type="text" spellcheck="false" minlength="2"></input>
+            <input class="client-id-state" id="client-id-state" placeholder="Current Status of Activity" type="text" spellcheck="false" minlength="2"></input>
         </div>
 
         <h2 style="position: relative; top: 150px; left: 85px; margin: auto; text-align: center; font-family: 'Inter'; font-weight: 500; font-size: 18px; float: left; cursor: default;">Large Image Key</h2>
         <h2 style="position: relative; top: 150px; left: 25px; margin: auto; text-align: center; font-family: 'Inter'; font-weight: 500; font-size: 18px; cursor: default;">Large Image Text</h2>
         <div class="rpc-main-config-ImageKey">
-            <input class="client-id-LImageKey" id="client-id-LImageKey" placeholder="bigThonk" type="text" spellcheck="false"></input>
-            <input class="client-id-LImageText" id="client-id-LImageText" placeholder="Thonking" type="text" spellcheck="false"></input>
+            <input class="client-id-LImageKey" id="client-id-LImageKey" placeholder="largeImage" type="text" spellcheck="false"></input>
+            <input class="client-id-LImageText" id="client-id-LImageText" placeholder="This is a large image" type="text" spellcheck="false"></input>
         </div>
 
         <h2 style="position: relative; top: 180px; left: 80px; margin: auto; text-align: center; font-family: 'Inter'; font-weight: 500; font-size: 18px; float: left; cursor: default;">Small Image Key</h2>
         <h2 style="position: relative; top: 180px; left: 20px; margin: auto; text-align: center; font-family: 'Inter'; font-weight: 500; font-size: 18px; cursor: default;">Small Image Text</h2>
         <div class="rpc-main-config-ImageText">
-            <input class="client-id-SImageKey" id="client-id-SImageKey" placeholder="smallThonk" type="text" spellcheck="false"></input>
-            <input class="client-id-SImageText" id="client-id-SImageText" placeholder="Idle" type="text" spellcheck="false"></input>
+            <input class="client-id-SImageKey" id="client-id-SImageKey" placeholder="smallImage" type="text" spellcheck="false"></input>
+            <input class="client-id-SImageText" id="client-id-SImageText" placeholder="This is a small image" type="text" spellcheck="false"></input>
         </div>
 
-        <button class="field-profiles-button" id="field-profiles-button" onmouseup="openMenu('MainMenu', 'ProfileMenu');" style="float: left;">Field Profiles</button>
+        <button class="profiles-button" id="profiles-button" onmouseup="openMenu('MainMenu', 'ProfileMenu');" style="float: left;">Field Profiles</button>
     </div>
 </body>
 </html>
+
+<script src="index.js" defer></script>
